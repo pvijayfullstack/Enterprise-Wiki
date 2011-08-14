@@ -7,6 +7,10 @@ gem 'rails', '3.0.9'
 
 gem 'sqlite3'
 
+gem 'liquid'
+gem 'themes_for_rails'
+gem 'haml'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

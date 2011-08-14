@@ -1,4 +1,6 @@
 EnterpriseWiki::Application.routes.draw do
+  themes_for_rails
+
   get "home/index"
 
   # The priority is based upon order of creation:
