@@ -1,6 +1,6 @@
 class PageController < ApplicationController
   def show
-    redirect_to "/edit/#{params[:path]}" unless @page = get_page
+    redirect_to "/#{params[:path]}/edit" unless @page = get_page
   end
   
   def edit

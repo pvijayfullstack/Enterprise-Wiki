@@ -5,10 +5,10 @@ EnterpriseWiki::Application.routes.draw do
   themes_for_rails
   
   match '/'    => redirect('/Home')
-  match 'edit' => redirect('/edit/Home')
+  match 'edit' => redirect('/Home/edit')
   
-  match 'edit/(*path)' => 'page#edit', :via => :get
-  match '*path'        => 'page#save', :via => [:put, :post]
-  match '*path'        => 'page#show', :via => :get
+  match '*path/edit' => 'page#edit', :via => :get
+  match '*path'      => 'page#save', :via => [:put, :post]
+  match '*path'      => 'page#show', :via => :get
   
 end
