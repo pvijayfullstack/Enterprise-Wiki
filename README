@@ -37,7 +37,7 @@ Where values are combined, they are delimited by colon symbols.
 
 See http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html
 for a coding example. The authenticate_or_request_with_http_digest 
-block must return the user¡¯s password or the ha1 digest hash so 
-the framework can appropriately hash to check the user¡¯s credentials. 
+block must return the user's password or the ha1 digest hash so 
+the framework can appropriately hash to check the user's credentials. 
 Returning nil will cause authentication to fail.
 
