@@ -10,5 +10,4 @@ EnterpriseWiki::Application.routes.draw do
   match '*path/edit' => 'page#edit', :via => :get
   match '*path'      => 'page#save', :via => [:put, :post]
   match '*path'      => 'page#show', :via => :get
-  
 end

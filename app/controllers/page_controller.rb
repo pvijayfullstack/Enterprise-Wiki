@@ -12,7 +12,7 @@ class PageController < ApplicationController
         Page.new(:path => params[:path], :editor => 'somebody', :revision => 1)
       end
   end
-
+  
   def save
     @page = Page.new(params[:page])
     if @page.save
@@ -21,10 +21,9 @@ class PageController < ApplicationController
       render :edit
     end
   end
-
-private
-  def get_page
-    Page.find_latest_by_path(params[:path])
-  end
   
+  private
+    def get_page
+      Page.find_latest_by_path(params[:path])
+    end
 end

@@ -2,3 +2,42 @@
 ==========
 Wanna add pages.
 page: path:string title:string body:text editor:string revision:integer
+
+HTTP Digest Authentication
+--------------------------
+* The client asks for a page that requires authentication 
+  but does not provide a username and password. Typically 
+  this is because the user simply entered the address or 
+  followed a link to the page.
+* The server responds with the 401 "client-error" response 
+  code, providing the authentication realm and a randomly-
+  generated, single-use value called a nonce.
+* At this point, the client will present the authentication 
+  realm (typically a description of the computer or system 
+  being accessed) to the user and prompt for a username and 
+  password. The user may decide to cancel at this point.
+* Once a username and password have been supplied, the client 
+  re-sends the same request but adds an authentication header 
+  that includes the response code.
+* In this example, the server accepts the authentication and 
+  the page is returned. If the username is invalid and/or the 
+  password is incorrect, the server might return the "401" 
+  response code and the client would prompt the user again.
+
+The "response" value is calculated in three steps, as follows. 
+Where values are combined, they are delimited by colon symbols.
+* The MD5 hash of the combined username, authentication realm 
+  and password is calculated. The result is referred to as HA1.
+* The MD5 hash of the combined method and digest URI is calculated, 
+  e.g. of "GET" and "/dir/index.html". The result is referred to as HA2.
+* The MD5 hash of the combined HA1 result, server nonce (nonce), 
+  request counter (nc), client nonce (cnonce), quality of protection 
+  code (qop) and HA2 result is calculated. The result is the "response" 
+  value provided by the client.
+
+See http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html
+for a coding example. The authenticate_or_request_with_http_digest 
+block must return the user¡¯s password or the ha1 digest hash so 
+the framework can appropriately hash to check the user¡¯s credentials. 
+Returning nil will cause authentication to fail.
+
