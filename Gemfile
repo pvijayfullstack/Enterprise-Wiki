@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'liquid'
 gem 'themes_for_rails'
 gem 'haml'
+gem 'dynamic_form'
 
 # Use unicorn as the web server
 # gem 'unicorn'
