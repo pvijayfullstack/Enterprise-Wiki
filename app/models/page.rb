@@ -1,2 +1,8 @@
 class Page < ActiveRecord::Base
+  validates :path, :length => { :in => 1 .. 100 }
+  validates :title, :length => { :in => 1 .. 100 }
+  validates :body, :length => { :in => 1 .. 10000 }
+  validates :editor, :length => { :in => 4 .. 100 }
+  validates :revision, :uniqueness => { :scope => :path },
+  validates :revision, :numericality => { :only_integer => true, :greater_than => 0 }
 end
