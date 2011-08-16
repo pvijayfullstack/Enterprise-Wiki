@@ -41,3 +41,16 @@ block must return the user's password or the ha1 digest hash so
 the framework can appropriately hash to check the user's credentials. 
 Returning nil will cause authentication to fail.
 
+User Management
+---------------
+Users are stored in a separated database, and are managed by
+other applications targeting user management. An example for 
+the `users' table is:
+
+    CREATE TABLE  `enterprise_wiki_users`.`users` (
+      `user_name` VARCHAR( 100 ) NOT NULL ,
+      `digest_hash` CHAR( 40 ) NOT NULL ,
+      PRIMARY KEY (  `user_name` )
+    ) ENGINE = MYISAM ;
+
+
