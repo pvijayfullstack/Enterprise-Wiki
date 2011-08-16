@@ -1,4 +1,0 @@
-2011/08/16
-==========
-Wanna add pages.
-page: path:string title:string body:text editor:string revision:integer
