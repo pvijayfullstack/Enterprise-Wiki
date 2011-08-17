@@ -4,13 +4,12 @@ class PageController < ApplicationController
   end
   
   def edit
-    @page =
-      if p = get_page
-        Page.new(:path => p.path, :title => p.title, :body => p.body,
-                 :editor => p.editor, :revision => p.revision + 1)
-      else
-        Page.new(:path => params[:path], :editor => 'somebody', :revision => 1)
-      end
+    if p = get_page
+      @page = p.clone
+      @page.revision += 1
+    else
+      @page = Page.new(:path => params[:path], :editor => 'somebody', :revision => 1)
+    end
   end
   
   def save
