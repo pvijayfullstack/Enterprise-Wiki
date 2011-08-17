@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-  validates :user_name, :digest_hash, :presence => true
+  validates :name, :digest, :presence => true
 end
