@@ -1,9 +1,10 @@
 class Page < ActiveRecord::Base
+  belongs_to :editor, :class_name => "User", :foreign_key => "editor_id"
+
   validates :path, :length => { :in => 1 .. 100 }
   validates :title, :length => { :in => 1 .. 100 }
   validates :body, :length => { :in => 1 .. 10000 }
-  validates :editor, :length => { :in => User::NAME_LENGTH }
-  validates :editor, :format => { :with => User::NAME_FORMAT }
+  validates :editor_id, :presence => true
   validates :revision, :uniqueness => { :scope => :path }
   validates :revision, :numericality => { :only_integer => true, :greater_than => 0 }
   

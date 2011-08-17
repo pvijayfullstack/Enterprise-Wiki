@@ -2,8 +2,8 @@ require 'uri'
 
 class PageController < ApplicationController
   before_filter :escape_path
-  before_filter :authenticate, :except => :show
-  before_filter :authorize_edit, :except => :show
+  before_filter :authenticate_user!, :except => :show
+  before_filter :authorize_edit, :only => [:edit, :save]
   
   def show
     redirect_to "/#{@path}/edit" unless @page = get_page

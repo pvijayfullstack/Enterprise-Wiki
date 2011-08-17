@@ -4,7 +4,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :path
       t.string :title
       t.text :body
-      t.string :editor
+      t.integer :editor_id
       t.integer :revision
 
       t.timestamps

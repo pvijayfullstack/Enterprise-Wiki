@@ -1,12 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.0.10'
 
 gem 'sqlite3'
 
 gem 'dynamic_form'
 gem 'liquid'
 gem 'themes_for_rails'
+
+gem 'devise'
 
 # Use unicorn as the web server
 # gem 'unicorn'
