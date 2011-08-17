@@ -18,13 +18,8 @@ class User < ActiveRecord::Base
     username
   end
   
-  def super_user?
-    # TODO consider super list
-    username == "root"
-  end
-  
   def can_edit? (path)
-    if super_user?
+    if admin?
       true
     elsif path.starts_with? "~"
       "#{path}/".starts_with? "~#{username}/"

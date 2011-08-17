@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110817095655) do
+ActiveRecord::Schema.define(:version => 20110817121621) do
 
   create_table "pages", :force => true do |t|
     t.string   "path"
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20110817095655) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",             :limit => 40,                  :null => false
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
+    t.string   "username",             :limit => 40,                     :null => false
+    t.string   "email",                               :default => "",    :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
     t.string   "authentication_token"
     t.integer  "failed_attempts",                     :default => 0
     t.datetime "locked_at"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20110817095655) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",                               :default => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
