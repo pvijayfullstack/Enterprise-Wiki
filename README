@@ -1,3 +1,21 @@
+2011/08/18
+==========
+Add markups for page body. Reference https://github.com/github/markup
+
+.markdown -- gem install redcarpet
+    Markdown.new(content).to_html
+.textile -- gem install RedCloth
+    RedCloth.new(content).to_html
+.rdoc -- gem install rdoc -v 3.6.1
+    https://github.com/github/markup/blob/master/lib/github/markup/rdoc.rb
+.org -- gem install org-ruby
+    Orgmode::Parser.new(content).to_html
+.creole -- gem install creole
+    Creole.creolize(content)
+.mediawiki -- gem install wikicloth
+    WikiCloth::WikiCloth.new(:data => content).to_html(:noedit => true)
+
+
 2011/08/17
 ==========
 Wanna check permissions when editing pages.
