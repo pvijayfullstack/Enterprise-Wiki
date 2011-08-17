@@ -38,5 +38,8 @@ module EnterpriseWiki
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    # Configure realm for HTTP digest authentication
+    config.realm = "Enterprise Wiki Software"
   end
 end
