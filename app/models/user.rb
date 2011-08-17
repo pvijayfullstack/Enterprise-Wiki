@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :pages, :foreign_key => "editor_id"
+  has_many :prefix_rules
   
   validates :username, :length => { :in => 4 .. 40 }
   validates :username, :format => { :with => /\A[A-Za-z][A-Za-z0-9_.]+\z/ }
@@ -24,8 +25,12 @@ class User < ActiveRecord::Base
     elsif path.starts_with? "~"
       "#{path}/".starts_with? "~#{username}/"
     else
-      # TODO consider black list
-      true
+      prefix_rules.each do |rule|
+        if path.starts_with? rule.prefix
+          return true
+        end
+      end
+      false
     end
   end
 end

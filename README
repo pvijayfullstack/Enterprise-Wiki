@@ -16,6 +16,8 @@ Normal Page Rules
 * bypass white list (check prefix, i.e. starts_with?)
 * forbid others
 
+Add new model PrefixRule: user_id:integer prefix:string
+
 
 2011/08/16
 ==========

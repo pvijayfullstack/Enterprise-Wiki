@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110817123534) do
+ActiveRecord::Schema.define(:version => 20110817141413) do
 
   create_table "pages", :force => true do |t|
     t.string   "path"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(:version => 20110817123534) do
     t.text     "body"
     t.integer  "editor_id"
     t.integer  "revision"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "prefix_rules", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "prefix"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
