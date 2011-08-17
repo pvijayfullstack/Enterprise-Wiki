@@ -1,6 +1,6 @@
 <h1>Page#edit</h1>
 
-<%= form_for @page, :url => "/#{@page.path}" do |f| %>
+<%= form_for @page, :url => @page.to_s do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :path %>

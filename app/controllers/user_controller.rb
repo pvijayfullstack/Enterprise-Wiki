@@ -1,6 +1,6 @@
 class UserController < ApplicationController
-  def show
-    params[:path] ||= ''
+  def index
+    @users = User.all
   end
 
 end
