@@ -1,11 +1,12 @@
 require 'uri'
 
 class PageController < ApplicationController
-  before_filter :authenticate, :except => :show
   before_filter :escape_path
+  before_filter :authenticate, :except => :show
+  before_filter :can_edit_page, :only => [:edit, :save]
   
   def show
-    redirect_to "/#{params[:path]}/edit" unless @page = get_page
+    redirect_to "/#{@path}/edit" unless @page = get_page
   end
   
   def edit
@@ -14,7 +15,7 @@ class PageController < ApplicationController
       @page.editor = current_user
       @page.revision += 1
     else
-      @page = Page.new(:path => params[:path], :editor => current_user, :revision => 1)
+      @page = Page.new(:path => @path, :editor => current_user, :revision => 1)
     end
   end
   
@@ -29,10 +30,17 @@ class PageController < ApplicationController
   
   private
     def get_page
-      Page.find_latest_by_path(params[:path])
+      Page.find_latest_by_path(@path)
     end
     
     def escape_path
-      params[:path] = URI::escape(params[:path])
+      @path = URI::escape(params[:path])
+    end
+    
+    def can_edit_page
+      # TODO
+      if @path.starts_with? "~"
+        render :text => "Unauthorized!", :status => :unauthorized, :layout => false
+      end
     end
 end
