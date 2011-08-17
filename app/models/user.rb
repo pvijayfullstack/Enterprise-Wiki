@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-  establish_connection "user_#{RAILS_ENV}"
+  validates :user_name, :digest_hash, :presence => true
 end

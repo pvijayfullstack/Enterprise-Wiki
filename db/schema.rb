@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110816095250) do
+ActiveRecord::Schema.define(:version => 20110817012542) do
 
   create_table "pages", :force => true do |t|
     t.string   "path"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(:version => 20110816095250) do
     t.text     "body"
     t.string   "editor"
     t.integer  "revision"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,7 +2,7 @@ EnterpriseWiki::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   
-  themes_for_rails
+  # themes_for_rails
   
   match '/'    => redirect('/Home')
   match 'edit' => redirect('/Home/edit')

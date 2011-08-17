@@ -20,32 +20,3 @@ production:
   database: db/production.sqlite3
   pool: 5
   timeout: 5000
-
-# The following configurations are for the user database
-# which is separated from this application and is supposed to
-# be managed by another application targeting user management.
-#
-# For details, follow the following link:
-# http://stackoverflow.com/questions/1226182/
-
-user_development:
-  adapter: mysql
-  database: enterprise_wiki_users
-  username: root
-  password: root
-  host: localhost
-
-user_test:
-  adapter: mysql
-  database: enterprise_wiki_users
-  username: root
-  password: root
-  host: localhost
-
-user_production:
-  adapter: mysql
-  database: enterprise_wiki_users
-  username: root
-  password: root
-  host: localhost
-
