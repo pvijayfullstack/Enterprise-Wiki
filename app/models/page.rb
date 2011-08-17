@@ -7,7 +7,7 @@ class Page < ActiveRecord::Base
   validates :revision, :uniqueness => { :scope => :path }
   validates :revision, :numericality => { :only_integer => true, :greater_than => 0 }
   
-  def self.find_latest_by_path(path)
+  def self.find_latest_by_path (path)
     readonly.where(:path => path).order(:revision).last
   end
   

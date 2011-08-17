@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110817020250) do
+ActiveRecord::Schema.define(:version => 20110817063612) do
 
   create_table "pages", :force => true do |t|
     t.string   "path"

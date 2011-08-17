@@ -1,3 +1,22 @@
+2011/08/17
+==========
+Wanna check permissions when editing pages.
+Two kinds of pages: personal and normal.
+Personal pages' paths start with a tilde.
+
+Personal Page Rules
+-------------------
+* bypass super-user (e.g. root)
+* bypass page owner (i.e. "~xxx" xxx == current_user)
+* forbid others
+
+Normal Page Rules
+-----------------
+* bypass super-user (e.g. root)
+* forbid black list (TODO)
+* bypass others
+
+
 2011/08/16
 ==========
 Wanna add pages.
