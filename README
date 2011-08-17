@@ -13,8 +13,8 @@ Personal Page Rules
 Normal Page Rules
 -----------------
 * bypass super-user (e.g. root)
-* forbid black list (TODO)
-* bypass others
+* bypass white list (check prefix, i.e. starts_with?)
+* forbid others
 
 
 2011/08/16
