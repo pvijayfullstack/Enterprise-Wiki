@@ -4,11 +4,12 @@ gem 'rails', '3.0.10'
 
 gem 'sqlite3'
 
+gem 'devise'
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.0'
+
 gem 'dynamic_form'
 gem 'liquid'
 gem 'themes_for_rails'
-
-gem 'devise'
 
 # Use unicorn as the web server
 # gem 'unicorn'

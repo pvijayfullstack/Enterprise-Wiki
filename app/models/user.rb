@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :pages
+  has_many :pages, :foreign_key => "editor_id"
   
   validates :username, :length => { :in => 4 .. 40 }
   validates :username, :format => { :with => /\A[A-Za-z][A-Za-z0-9_.]+\z/ }

@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/sferik/rails_admin.git
+  revision: 7ca591714c851d696cb0697f70180b72505facb8
+  branch: rails-3.0
+  specs:
+    rails_admin (0.0.1)
+      builder (~> 2.1.0)
+      haml (>= 3.1.0, < 3.3.0)
+      rails (~> 3.0.10)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -38,6 +48,7 @@ GEM
     dynamic_form (1.1.4)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    haml (3.1.2)
     i18n (0.5.0)
     liquid (2.2.2)
     mail (2.2.19)
@@ -89,5 +100,6 @@ DEPENDENCIES
   dynamic_form
   liquid
   rails (= 3.0.10)
+  rails_admin!
   sqlite3
   themes_for_rails
