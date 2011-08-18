@@ -9,7 +9,6 @@ EnterpriseWiki::Application.routes.draw do
   # (which may be "admin123")
   page_constraints = { :path => /(?!admin).*|admin(?!\/).+/ }
   
-  match '*path/edit' => 'page#edit', :constraints => page_constraints, :via => :get
-  match '*path'      => 'page#save', :constraints => page_constraints, :via => :post
-  match '*path'      => 'page#show', :constraints => page_constraints, :via => :get
+  match '*path' => 'page#show', :constraints => page_constraints, :via => :get
+  match '*path' => 'page#save', :constraints => page_constraints, :via => :post
 end

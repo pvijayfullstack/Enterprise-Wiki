@@ -6,7 +6,11 @@ class PageController < ApplicationController
   before_filter :authorize_edit, :only => [:edit, :save]
   
   def show
-    redirect_to "/#{@path}/edit" unless @page = get_page
+    if params[:edit]
+      edit
+    else
+      edit unless @page = get_page
+    end
   end
   
   def edit
@@ -17,6 +21,7 @@ class PageController < ApplicationController
     else
       @page = Page.new(:path => @path, :editor => current_user, :revision => 1)
     end
+    render :edit
   end
   
   def save
@@ -29,10 +34,6 @@ class PageController < ApplicationController
   end
   
   private
-    def get_page
-      Page.find_latest_by_path(@path)
-    end
-    
     def escape_path
       @path = URI::escape(params[:path])
     end
@@ -43,5 +44,9 @@ class PageController < ApplicationController
     
     def authorize_edit
       render_unauthorized unless current_user.can_edit? @path
+    end
+    
+    def get_page
+      Page.find_latest_by_path(@path)
     end
 end
