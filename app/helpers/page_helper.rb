@@ -21,7 +21,7 @@ module PageHelper
     elsif markup.is :creole
       Creole.creolize(body)
     elsif markup.is :mediawiki
-      # TODO
+      WikiCloth::WikiCloth.new(:data => body).to_html(:noedit => true)
     end
   end
 end
