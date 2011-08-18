@@ -6,7 +6,8 @@ module PageHelper
   end
 
   class MarkupRenderer
-    def initialize (markup, text)
+    def initialize (helper, markup, text)
+      @helper = helper
       @markup = markup
       @text   = text
     end
@@ -57,12 +58,36 @@ module PageHelper
       end
     end
     
+    def add_mathjax_script
+      @helper.content_for :mathjax do
+        mathjax = <<-MATHJAX
+          <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+          </script>
+        MATHJAX
+        mathjax.html_safe
+      end
+    end
+    
+    def contains_math_tag?
+      @text =~ /\<math\>.*?\<\/math\>/
+    end
+    
+    def replace_math_tag!
+      @text.gsub! /\<math\>/, "\\("
+      @text.gsub! /\<\/math\>/, "\\)"
+    end
+    
     def mediawiki
+      if contains_math_tag?
+        replace_math_tag!
+        add_mathjax_script
+      end
       MediaWiki.new(:data => @text).to_html(:noedit => true)
     end
   end
 
   def render_markup (markup, text)
-    MarkupRenderer.new(markup, text).to_s
+    MarkupRenderer.new(self, markup, text).to_s
   end
 end
