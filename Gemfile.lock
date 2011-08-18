@@ -48,6 +48,7 @@ GEM
     arel (2.0.10)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    creole (0.4.2)
     devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -107,6 +108,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth
+  creole
   devise
   dynamic_form
   liquid

@@ -19,7 +19,7 @@ module PageHelper
     elsif markup.is :orgmode
       Orgmode::Parser.new(body).to_html
     elsif markup.is :creole
-      # TODO
+      Creole.creolize(body)
     elsif markup.is :mediawiki
       # TODO
     end
