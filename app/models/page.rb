@@ -4,7 +4,7 @@ class Page < ActiveRecord::Base
 
   validates :path, :length => { :in => 1 .. 100 }
   validates :title, :length => { :in => 1 .. 100 }
-  validates :body, :length => { :in => 1 .. 10000 }
+  validates :body, :length => { :in => 1 .. 100000 }
   validates :editor_id, :presence => true
   validates :revision, :uniqueness => { :scope => :path }
   validates :revision, :numericality => { :only_integer => true, :greater_than => 0 }
