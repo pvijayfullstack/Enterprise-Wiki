@@ -1,9 +1,13 @@
-require "rdoc/markup/to_html"
+require 'rdoc/markup/to_html'
 
 module PageHelper
+  def PageHelper.replace_spaces_in (path)
+    path.gsub(/\s+/, '_')
+  end
+
   class MediaWiki < WikiCloth::Parser
     link_for do |path, text|
-      "<a href=\"/#{ path.gsub(/\s+/, '_') }\">#{text}</a>"
+      "<a href=\"/#{ PageHelper.replace_spaces_in path }\">#{text}</a>"
     end
   end
 

@@ -24,7 +24,11 @@ class PageController < ApplicationController
   
 private
   def escape_path
-    @path = URI::escape(params[:path])
+    replaced = PageHelper.replace_spaces_in params[:path]
+    @path = URI.escape replaced
+    if replaced != params[:path]
+      redirect_to "/#{@path}" # TODO query string not considered
+    end
   end
   
   def can_edit_path?
