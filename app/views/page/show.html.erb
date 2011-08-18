@@ -4,4 +4,4 @@
 <p>Editor: <%= @page.editor %></p>
 <p>Revision: <%= @page.revision %></p>
 <p>Last update: <%= @page.updated_at %></p>
-<div class="page_body"><%= render_markup(@page.markup, @page.body) %></div>
+<div class="page_body"><%= render_markup(@page.markup, @page.body).html_safe %></div>

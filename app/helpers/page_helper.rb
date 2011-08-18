@@ -5,56 +5,64 @@ module PageHelper
     path.gsub(/\s+/, '_')
   end
 
-  class MediaWiki < WikiCloth::Parser
-    link_for do |path, text|
-      "<a href=\"/#{ PageHelper.replace_spaces_in path }\">#{text}</a>"
+  class MarkupRenderer
+    def initialize (markup, text)
+      @markup = markup
+      @text   = text
     end
-  end
+    
+    def to_s
+      if respond_to? @markup.to_sym
+        send @markup.to_sym
+      else
+        "<pre>#{ h @text }</pre>"
+      end
+    end
   
-  MARKDOWN_OPTIONS = {
-    :no_intra_emphasis   => true,
-    :tables              => true,
-    :fenced_code_blocks  => true,
-    :autolink            => false,
-    :strikethrough       => true,
-    :lax_html_blocks     => false,
-    :space_after_headers => false,
-    :superscript         => false
-  }
-  
-  def render_markdown (body)
-    Redcarpet::Markdown.new(Redcarpet::Render::HTML, MARKDOWN_OPTIONS).render(body)
-  end
-  
-  def render_textile (body)
-    RedCloth.new(body).to_html
-  end
-  
-  def render_rdoc (body)
-    RDoc::Markup::ToHtml.new.convert(body)
-  end
-  
-  def render_orgmode (body)
-    Orgmode::Parser.new(body).to_html
-  end
-  
-  def render_creole (body)
-    Creole.creolize(body)
-  end
-  
-  def render_mediawiki (body)
-    MediaWiki.new(:data => body).to_html(:noedit => true)
+  protected
+    MARKDOWN_OPTIONS = {
+      :no_intra_emphasis   => true,
+      :tables              => true,
+      :fenced_code_blocks  => true,
+      :autolink            => false,
+      :strikethrough       => true,
+      :lax_html_blocks     => false,
+      :space_after_headers => false,
+      :superscript         => false
+    }
+    
+    def markdown
+      Redcarpet::Markdown.new(Redcarpet::Render::HTML, MARKDOWN_OPTIONS).render(@text)
+    end
+    
+    def textile
+      RedCloth.new(@text).to_html
+    end
+    
+    def rdoc
+      RDoc::Markup::ToHtml.new.convert(@text)
+    end
+    
+    def orgmode
+      Orgmode::Parser.new(@text).to_html
+    end
+    
+    def creole
+      Creole.creolize(@text)
+    end
+    
+    class MediaWiki < WikiCloth::Parser
+      link_for do |path, text|
+        "<a href=\"/#{ PageHelper.replace_spaces_in path }\">#{text}</a>"
+      end
+    end
+    
+    def mediawiki
+      MediaWiki.new(:data => @text).to_html(:noedit => true)
+    end
   end
 
-  def render_markup (markup, body)
-    if    markup.is :markdown  then render_markdown(body).html_safe
-    elsif markup.is :textile   then render_textile(body).html_safe
-    elsif markup.is :rdoc      then render_rdoc(body).html_safe
-    elsif markup.is :orgmode   then render_orgmode(body).html_safe
-    elsif markup.is :creole    then render_creole(body).html_safe
-    elsif markup.is :mediawiki then render_mediawiki(body).html_safe
-    else
-      body
-    end
+  def render_markup (markup, text)
+    MarkupRenderer.new(markup, text).to_s
   end
 end
