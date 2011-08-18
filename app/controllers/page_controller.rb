@@ -66,7 +66,7 @@ private
       error 404
     end
   end
-    
+  
   def edit?
     params[:edit] or params[:do] == "edit"
   end

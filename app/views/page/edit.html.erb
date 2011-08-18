@@ -23,6 +23,14 @@
     <%= f.number_field :revision, :readonly => true %>
   </p>
   <p>
+    <%= f.label :is_private %>
+    <%= f.check_box :is_private %>
+  </p>
+  <p>
+    <%= f.label :is_protected %>
+    <%= f.check_box :is_protected %>
+  </p>
+  <p>
     <%= f.submit "Save" %>
   </p>
 <% end %>
