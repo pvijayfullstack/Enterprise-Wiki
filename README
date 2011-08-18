@@ -24,6 +24,18 @@ Add markups for page body. Reference https://github.com/github/markup
     WikiCloth::WikiCloth.new(:data => content).to_html(:noedit => true)
 OTHERWISE -- PLAIN TEXT
 
+Add <math> support using MathJax
+--------------------------------
+* Some markups will process <math> (e.g. MediaWiki) 
+  or escape <math> tag (e.g. Creole), but they do not care backslashes.
+  In this case, just replace <math> with \( and </math> with \)
+* Some markups will process backslashes, but they allow HTML-like tags
+  and do not care the embedded contents in these tags, e.g. Markdown.
+  In this case, leave <math> tags and process the markup itself first.
+  After it is converted into HTML, replace <math> tags with \( and \)
+* Some markups will escape <math> tags, and they also process backslashes.
+  RDoc works this way and it is really bothering. I will handle it later.
+
 2011/08/17
 ==========
 Wanna check permissions when editing pages.

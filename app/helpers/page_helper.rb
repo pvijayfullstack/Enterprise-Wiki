@@ -33,22 +33,47 @@ module PageHelper
     }
     
     def markdown
-      Redcarpet::Markdown.new(Redcarpet::Render::HTML, MARKDOWN_OPTIONS).render(@text)
+      html = Redcarpet::Markdown.new(Redcarpet::Render::HTML, MARKDOWN_OPTIONS).render(@text)
+      if contains_math_tag?
+        replace_math_tag! html
+        add_mathjax_script
+      end
+      html
     end
     
     def textile
-      RedCloth.new(@text).to_html
+      html = RedCloth.new(@text).to_html
+      if contains_math_tag?
+        replace_math_tag! html
+        add_mathjax_script
+      end
+      html
     end
     
     def rdoc
+      if contains_math_tag?
+        # TODO add math tag support
+        # replace \ with \\ between <math> and </math>
+        replace_math_tag! @text
+        add_mathjax_script
+      end
       RDoc::Markup::ToHtml.new.convert(@text)
     end
     
+    # Orgmode comes with MathJax options but we still provide the <math> format
     def orgmode
+      if contains_math_tag?
+        replace_math_tag! @text
+        add_mathjax_script
+      end
       Orgmode::Parser.new(@text).to_html
     end
     
     def creole
+      if contains_math_tag?
+        replace_math_tag! @text
+        add_mathjax_script
+      end
       Creole.creolize(@text)
     end
     
@@ -56,6 +81,14 @@ module PageHelper
       link_for do |path, text|
         "<a href=\"/#{ PageHelper.replace_spaces_in path }\">#{text}</a>"
       end
+    end
+    
+    def mediawiki
+      if contains_math_tag?
+        replace_math_tag! @text
+        add_mathjax_script
+      end
+      MediaWiki.new(:data => @text).to_html(:noedit => true)
     end
     
     def add_mathjax_script
@@ -73,17 +106,9 @@ module PageHelper
       @text =~ /\<math\>.*?\<\/math\>/
     end
     
-    def replace_math_tag!
-      @text.gsub! /\<math\>/, "\\("
-      @text.gsub! /\<\/math\>/, "\\)"
-    end
-    
-    def mediawiki
-      if contains_math_tag?
-        replace_math_tag!
-        add_mathjax_script
-      end
-      MediaWiki.new(:data => @text).to_html(:noedit => true)
+    def replace_math_tag! (text)
+      text.gsub! /\<math\>/, "\\("
+      text.gsub! /\<\/math\>/, "\\)"
     end
   end
 
