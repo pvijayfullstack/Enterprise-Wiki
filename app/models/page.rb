@@ -17,4 +17,11 @@ class Page < ActiveRecord::Base
   def to_s
     "/#{path}"
   end
+  
+  def new_revision (attributes = {})
+    p = clone
+    attributes.each {|k,v| p[k] = v }
+    p.revision = revision + 1
+    p
+  end
 end

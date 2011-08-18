@@ -23,11 +23,43 @@ class PageController < ApplicationController
   end
   
 private
+  def query_params
+    params.select {|k,v| not %w(controller action path).include?(k) }
+  end
+  
+  def query_pairs
+    query_params.collect {|k,v| "#{k}=#{v}" }
+  end
+  
+  def query_string
+    if query_params.empty?
+      ""
+    else
+      "?" + query_pairs.join("&")
+    end
+  end
+  
+  def replaced_path
+    PageHelper.replace_spaces_in params[:path]
+  end
+  
+  def spaces_in_path?
+    replaced_path != params[:path]
+  end
+  
+  def escaped_path
+    URI.escape replaced_path
+  end
+  
+  def escaped_path_with_query
+    "/" + escaped_path + query_string
+  end
+  
   def escape_path
-    replaced = PageHelper.replace_spaces_in params[:path]
-    @path = URI.escape replaced
-    if replaced != params[:path]
-      redirect_to "/#{@path}" # TODO query string not considered
+    if spaces_in_path?
+      redirect_to escaped_path_with_query
+    else
+      @path = escaped_path
     end
   end
   
@@ -61,13 +93,17 @@ private
   
   def try_show
     if @page = get_page
-      if can_show_page?
-        render :show
-      else
-        error 401
-      end
+      show
     else
       error 404
+    end
+  end
+  
+  def show
+    if can_show_page?
+      render :show
+    else
+      error 401
     end
   end
   
@@ -85,9 +121,7 @@ private
   
   def edit
     if p = get_page
-      @page = p.clone
-      @page.editor = current_user
-      @page.revision += 1
+      @page = p.new_revision(:editor => current_user)
     else
       @page = Page.new(:path => @path, :editor => current_user, :revision => 1)
     end
