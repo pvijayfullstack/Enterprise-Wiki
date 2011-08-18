@@ -17,7 +17,7 @@ module PageHelper
     elsif markup.is :rdoc
       RDoc::Markup::ToHtml.new.convert(body)
     elsif markup.is :orgmode
-      # TODO
+      Orgmode::Parser.new(body).to_html
     elsif markup.is :creole
       # TODO
     elsif markup.is :mediawiki

@@ -13,6 +13,7 @@ gem 'themes_for_rails'
 
 gem 'redcarpet', :git => 'git://github.com/tanoku/redcarpet.git'
 gem 'RedCloth'
+gem 'org-ruby'
 
 # Use unicorn as the web server
 # gem 'unicorn'
