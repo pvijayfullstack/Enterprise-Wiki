@@ -8,8 +8,6 @@ class Page < ActiveRecord::Base
   validates :editor_id, :presence => true
   validates :revision, :uniqueness => { :scope => :path }
   validates :revision, :numericality => { :only_integer => true, :greater_than => 0 }
-  validates :is_private, :presence => true
-  validates :is_protected, :presence => true
   validates :markup_id, :presence => true
   
   def self.find_latest_by_path (path)

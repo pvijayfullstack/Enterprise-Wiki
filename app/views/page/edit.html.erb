@@ -11,6 +11,10 @@
     <%= f.text_field :title %>
   </p>
   <p>
+    <%= f.label :markup %>
+    <%= collection_select :page, :markup_id, Markup.all, :id, :title %>
+  </p>
+  <p>
     <%= f.label :body %>
     <%= f.text_area :body, :size => "60x12" %>
   </p>

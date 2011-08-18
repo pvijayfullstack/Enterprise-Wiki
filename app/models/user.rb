@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   validates :username, :length => { :in => 4 .. 40 }
   validates :username, :format => { :with => /\A[A-Za-z][A-Za-z0-9_.]+\z/ }
   validates :username, :uniqueness => { :case_sensitive => false }
-  validates :admin, :presence => true
   
   # Include default devise modules. Others available are:
   # :encryptable, :confirmable, :recoverable, :timeoutable and :omniauthable
