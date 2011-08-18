@@ -1,3 +1,5 @@
+require "rdoc/markup/to_html"
+
 module PageHelper
   def render_markup (markup, body)
     if markup.is :markdown
@@ -13,7 +15,7 @@ module PageHelper
     elsif markup.is :textile
       RedCloth.new(body).to_html
     elsif markup.is :rdoc
-      # TODO
+      RDoc::Markup::ToHtml.new.convert(body)
     elsif markup.is :orgmode
       # TODO
     elsif markup.is :creole
