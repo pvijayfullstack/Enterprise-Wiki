@@ -39,7 +39,8 @@ Add <math> support using MathJax
   In this case, leave <math> tags and process the markup itself first.
   After it is converted into HTML, replace <math> tags with \( and \)
 * Some markups will escape <math> tags, and they also process backslashes.
-  RDoc works this way and it is really bothering. I will handle it later.
+  RDoc works this way and it is really bothering. I handle it manually
+  by replacing \ with \\ between <math> and </math>
 
 2011/08/17
 ==========

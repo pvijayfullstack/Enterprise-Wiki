@@ -52,9 +52,13 @@ module PageHelper
     
     def rdoc
       if contains_math_tag?
-        # TODO add math tag support
         # replace \ with \\ between <math> and </math>
-        replace_math_tag! @text
+        i = j = 0
+        while i = @text.index("<math>", j)
+          j = @text.index("</math>", i)
+          @text[i..j] = @text[i..j].gsub(/\\/, "\\\\\\\\")
+        end
+        replace_math_tag! @text, "\\\\\\(", "\\\\\\)"
         add_mathjax_script
       end
       RDoc::Markup::ToHtml.new.convert(@text)
@@ -106,9 +110,9 @@ module PageHelper
       @text =~ /\<math\>.*?\<\/math\>/
     end
     
-    def replace_math_tag! (text)
-      text.gsub! /\<math\>/, "\\("
-      text.gsub! /\<\/math\>/, "\\)"
+    def replace_math_tag! (text, left = "\\(", right = "\\)")
+      text.gsub! /\<math\>/, left
+      text.gsub! /\<\/math\>/, right
     end
   end
 
