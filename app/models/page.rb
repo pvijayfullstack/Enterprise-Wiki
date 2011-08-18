@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
   belongs_to :editor, :class_name => "User", :foreign_key => "editor_id"
+  belongs_to :markup
 
   validates :path, :length => { :in => 1 .. 100 }
   validates :title, :length => { :in => 1 .. 100 }
@@ -7,6 +8,9 @@ class Page < ActiveRecord::Base
   validates :editor_id, :presence => true
   validates :revision, :uniqueness => { :scope => :path }
   validates :revision, :numericality => { :only_integer => true, :greater_than => 0 }
+  validates :is_private, :presence => true
+  validates :is_protected, :presence => true
+  validates :markup_id, :presence => true
   
   def self.find_latest_by_path (path)
     readonly.where(:path => path).order(:revision).last

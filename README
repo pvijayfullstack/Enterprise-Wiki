@@ -11,8 +11,7 @@ Page show:
 
 Add markups for page body. Reference https://github.com/github/markup
 
-.markdown -- gem install redcarpet
-    Markdown.new(content).to_html
+.markdown -- https://github.com/tanoku/redcarpet
 .textile -- gem install RedCloth
     RedCloth.new(content).to_html
 .rdoc -- gem install rdoc -v 3.6.1
@@ -23,7 +22,7 @@ Add markups for page body. Reference https://github.com/github/markup
     Creole.creolize(content)
 .mediawiki -- gem install wikicloth
     WikiCloth::WikiCloth.new(:data => content).to_html(:noedit => true)
-
+OTHERWISE -- PLAIN TEXT
 
 2011/08/17
 ==========

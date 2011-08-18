@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :username, :length => { :in => 4 .. 40 }
   validates :username, :format => { :with => /\A[A-Za-z][A-Za-z0-9_.]+\z/ }
   validates :username, :uniqueness => { :case_sensitive => false }
+  validates :admin, :presence => true
   
   # Include default devise modules. Others available are:
   # :encryptable, :confirmable, :recoverable, :timeoutable and :omniauthable
@@ -13,7 +14,7 @@ class User < ActiveRecord::Base
          :authentication_keys => [:username]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :username, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :username, :password, :password_confirmation, :remember_me, :admin
   
   def to_s
     username
@@ -35,14 +36,14 @@ class User < ActiveRecord::Base
     can? :edit, path
   end
   
-  def can? (operation, path)
+  def can? (action, path)
     if admin?
       true
     elsif path.starts_with? "~"
       "#{path}/".starts_with? "~#{username}/"
     else
       prefix_rules.each do |rule|
-        if operation.to_s == rule.action_name and "#{path}/".starts_with? "#{rule.prefix}/"
+        if rule.rule_action.is(action) and "#{path}/".starts_with? "#{rule.prefix}/"
           return true
         end
       end

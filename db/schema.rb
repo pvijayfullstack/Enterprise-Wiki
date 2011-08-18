@@ -11,27 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110818025717) do
+ActiveRecord::Schema.define(:version => 20110818060125) do
+
+  create_table "markups", :force => true do |t|
+    t.string   "title",      :limit => 100, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "markups", ["title"], :name => "index_markups_on_title", :unique => true
 
   create_table "pages", :force => true do |t|
-    t.string   "path"
-    t.string   "title"
-    t.text     "body"
-    t.integer  "editor_id"
-    t.integer  "revision"
+    t.string   "path",         :limit => 100,                   :null => false
+    t.string   "title",        :limit => 100,                   :null => false
+    t.text     "body",                                          :null => false
+    t.integer  "editor_id",                                     :null => false
+    t.integer  "revision",                                      :null => false
+    t.boolean  "is_private",                  :default => true, :null => false
+    t.boolean  "is_protected",                :default => true, :null => false
+    t.integer  "markup_id",                                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_private",   :default => true
-    t.boolean  "is_protected", :default => true
   end
 
+  add_index "pages", ["path", "revision"], :name => "index_pages_on_path_and_revision", :unique => true
+
   create_table "prefix_rules", :force => true do |t|
-    t.integer  "role_id"
-    t.string   "prefix"
-    t.string   "action_name"
+    t.integer  "role_id",                       :null => false
+    t.integer  "rule_action_id",                :null => false
+    t.string   "prefix",         :limit => 100, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "prefix_rules", ["role_id", "rule_action_id", "prefix"], :name => "index_prefix_rules_on_role_id_and_rule_action_id_and_prefix", :unique => true
 
   create_table "rails_admin_histories", :force => true do |t|
     t.string   "message"
@@ -47,18 +60,31 @@ ActiveRecord::Schema.define(:version => 20110818025717) do
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "roles", :force => true do |t|
-    t.string   "title"
+    t.string   "title",      :limit => 100, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "roles", ["title"], :name => "index_roles_on_title", :unique => true
+
   create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
+    t.integer "role_id", :null => false
+    t.integer "user_id", :null => false
   end
+
+  add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id", :unique => true
+
+  create_table "rule_actions", :force => true do |t|
+    t.string   "title",      :limit => 40, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rule_actions", ["title"], :name => "index_rule_actions_on_title", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username",             :limit => 40,                     :null => false
+    t.boolean  "admin",                               :default => false, :null => false
     t.string   "email",                               :default => "",    :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
     t.string   "authentication_token"
@@ -72,7 +98,6 @@ ActiveRecord::Schema.define(:version => 20110818025717) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                               :default => false
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

@@ -1,7 +1,9 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def self.up
     create_table(:users) do |t|
-      t.string :username, :null => false, :limit => 40
+      t.string  :username, :null => false, :limit => 40
+      t.boolean :admin,    :null => false, :default => false
+      
       t.database_authenticatable
       t.token_authenticatable
       t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :time

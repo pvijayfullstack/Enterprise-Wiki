@@ -11,6 +11,8 @@ gem 'dynamic_form'
 gem 'liquid'
 gem 'themes_for_rails'
 
+gem 'redcarpet', :git => 'git://github.com/tanoku/redcarpet.git'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
