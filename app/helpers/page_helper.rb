@@ -11,7 +11,7 @@ module PageHelper
           :space_after_headers => false,
           :superscript         => false).render(body)
     elsif markup.is :textile
-      # TODO
+      RedCloth.new(body).to_html
     elsif markup.is :rdoc
       # TODO
     elsif markup.is :orgmode
