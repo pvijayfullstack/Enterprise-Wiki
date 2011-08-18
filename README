@@ -1,5 +1,14 @@
 2011/08/18
 ==========
+Add role model: title:string
+Change prefix_rule model: role_id:integer prefix:string action_name:string
+
+Page show:
+* if can edit this page, bypass (if not, can view by editing which is the same)
+* if PRIVATE, check prefix rules
+* if PROTECTED, only signed in users allowed
+* otherwise, it is public to all
+
 Add markups for page body. Reference https://github.com/github/markup
 
 .markdown -- gem install redcarpet

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :pages, :foreign_key => "editor_id"
-  has_many :prefix_rules
+  has_and_belongs_to_many :roles
   
   validates :username, :length => { :in => 4 .. 40 }
   validates :username, :format => { :with => /\A[A-Za-z][A-Za-z0-9_.]+\z/ }
@@ -19,14 +19,30 @@ class User < ActiveRecord::Base
     username
   end
   
+  def title
+    username
+  end
+  
+  def prefix_rules
+    roles.collect(&:prefix_rules).flatten
+  end
+  
+  def can_show? (path)
+    can? :show, path
+  end
+  
   def can_edit? (path)
+    can? :edit, path
+  end
+  
+  def can? (operation, path)
     if admin?
       true
     elsif path.starts_with? "~"
       "#{path}/".starts_with? "~#{username}/"
     else
       prefix_rules.each do |rule|
-        if path.starts_with? rule.prefix
+        if operation.to_s == rule.action_name and "#{path}/".starts_with? "#{rule.prefix}/"
           return true
         end
       end

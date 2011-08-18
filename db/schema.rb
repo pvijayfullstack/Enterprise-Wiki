@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110817141413) do
+ActiveRecord::Schema.define(:version => 20110818025717) do
 
   create_table "pages", :force => true do |t|
     t.string   "path"
@@ -21,11 +21,14 @@ ActiveRecord::Schema.define(:version => 20110817141413) do
     t.integer  "revision"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_private",   :default => true
+    t.boolean  "is_protected", :default => true
   end
 
   create_table "prefix_rules", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "role_id"
     t.string   "prefix"
+    t.string   "action_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +45,17 @@ ActiveRecord::Schema.define(:version => 20110817141413) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "roles", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username",             :limit => 40,                     :null => false
