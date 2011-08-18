@@ -4,7 +4,7 @@ class PageController < ApplicationController
   before_filter :escape_path
   before_filter :authorize_save, :only => :save
   
-  def show
+  def view
     if edit?
       try_edit
     else
