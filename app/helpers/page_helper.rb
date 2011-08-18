@@ -1,6 +1,12 @@
 require "rdoc/markup/to_html"
 
 module PageHelper
+  class MediaWiki < WikiCloth::Parser
+    link_for do |path, text|
+      "<a href=\"/#{ path.gsub(/\s+/, '_') }\">#{text}</a>"
+    end
+  end
+
   def render_markup (markup, body)
     if markup.is :markdown
       Redcarpet::Markdown.new(Redcarpet::Render::HTML,
@@ -21,7 +27,9 @@ module PageHelper
     elsif markup.is :creole
       Creole.creolize(body)
     elsif markup.is :mediawiki
-      WikiCloth::WikiCloth.new(:data => body).to_html(:noedit => true)
+      MediaWiki.new(:data => body).to_html(:noedit => true)
+    else
+      # TODO escape as plain text
     end
   end
 end
