@@ -39,16 +39,16 @@ private
     end
   end
   
-  def replaced_path
-    PageHelper.replace_spaces_in params[:path]
+  def slugified_path
+    PageHelper.slugify params[:path]
   end
   
-  def spaces_in_path?
-    replaced_path != params[:path]
+  def path_slugified?
+    slugified_path == params[:path]
   end
   
   def escaped_path
-    URI.escape replaced_path
+    URI.escape slugified_path
   end
   
   def escaped_path_with_query
@@ -56,7 +56,7 @@ private
   end
   
   def escape_path
-    if spaces_in_path?
+    if not path_slugified?
       redirect_to escaped_path_with_query
     else
       @path = escaped_path

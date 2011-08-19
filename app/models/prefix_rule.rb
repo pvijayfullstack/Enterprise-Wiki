@@ -6,6 +6,10 @@ class PrefixRule < ActiveRecord::Base
   validates :rule_action_id, :presence => true
   validates :prefix, :length => { :in => 1 .. 100 }
   
+  def prefix
+    self[:prefix].to_s.strip.downcase
+  end
+  
   def title
     "#{rule_action.title.capitalize} #{prefix}"
   end

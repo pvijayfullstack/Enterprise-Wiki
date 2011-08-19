@@ -1,8 +1,8 @@
 require 'rdoc/markup/to_html'
 
 module PageHelper
-  def PageHelper.replace_spaces_in (path)
-    path.strip.gsub(/\s+/, '_')
+  def PageHelper.slugify (path)
+    path.to_s.strip.downcase.gsub(/\s+/, '_')
   end
 
   class MarkupRenderer
@@ -83,7 +83,7 @@ module PageHelper
     
     class MediaWiki < WikiCloth::Parser
       link_for do |path, text|
-        "<a href=\"/#{ PageHelper.replace_spaces_in path }\">#{text}</a>"
+        "<a href=\"/#{ PageHelper.slugify path }\">#{text}</a>"
       end
     end
     
