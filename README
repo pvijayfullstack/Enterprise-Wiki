@@ -1,6 +1,9 @@
 2011/08/19
 ==========
 Restrict /admin access to super users (admin?)
+Already deployed with LightTPD + FastCGI
+About send_file and x-sendfile in Rails 3:
+  http://vijaydev.wordpress.com/2010/12/15/rails-3-and-apache-x-sendfile/
 # TODO Add file uploading
 
 

@@ -13,6 +13,8 @@ EnterpriseWiki::Application.configure do
   config.consider_all_requests_local       = true
   config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
+  
+  config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
