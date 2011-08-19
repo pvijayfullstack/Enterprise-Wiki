@@ -2,7 +2,7 @@ require 'rdoc/markup/to_html'
 
 module PageHelper
   def PageHelper.replace_spaces_in (path)
-    path.gsub(/\s+/, '_')
+    path.strip.gsub(/\s+/, '_')
   end
 
   class MarkupRenderer
