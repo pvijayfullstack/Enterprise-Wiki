@@ -5,7 +5,43 @@ Already deployed with LightTPD + FastCGI
 About send_file and x-sendfile in Rails 3:
   http://vijaydev.wordpress.com/2010/12/15/rails-3-and-apache-x-sendfile/
 # TODO Add file uploading
-
+According to many sources, especially http://stackoverflow.com/questions/735147/,
+I decided to create three different models for files.
+* Public/static files: they are not versioned and stored directly in places like
+  "#{Rails.root}/public/files/xj/ia/xjia/avatar.png". Files are stored in different
+  directories for different users in order to prevent illegal (unexpected) file
+  overwritten under the unversioned circumstance. Directory structure is layered into
+  three levels to prevent file system overloading which may be caused by too many files
+  in the same directory. Suppose @name is the user's name and it is guaranteed that
+  @name.length >= 4 according to the validation rules in the user model. Then the three
+  layers are represented as "#{@name[0..1]}/#{@name[2..3]}/#{@name}/". This same
+  technique is used in SourceForge project homepage hosting FTP as well. Note that
+  public files are supposed to be small. They can be used for static assets by users.
+* Protected files: they are stored in some place like "/data/enterprise-wiki/..."
+  which is not accessible directly through the web server, and is controlled by our
+  rails application. These files could benefit from X-Sendfile and thus be served
+  with access control and without loss of performance. Protected files are versioned.
+  There will be database tables for protected files in order to record the **mapped**
+  file name, the slugified name, the editor, and timestamps. Protected files are also
+  in layered directory structure, e.g. "/data/enterprise-wiki/xj/ia/xjia/XXX", in which
+  XXX is calculated as MD5(original_name + editor + timestamp). File extension is ignored.
+  Each slugified name corresponds to a mapped file name, which is the public file path,
+  e.g. "/courses/ppca/2011/my_report.pdf". People access files through paths like this,
+  and here comes the content type information, especially the extension part. However,
+  content length/size is left to LightTPD to determine. Protected files are supposed to
+  be most of the meaningful files stored in the system. Note that file paths are just
+  page paths, and access rules are the same: if the current user can edit a page with
+  that path, he can upload a file there; and if the current user can read a page with
+  that path, he can download a file there. In this sense, protected files can be 
+  implemented directly using pages, or to say it better, pages can be enhanced to
+  hold files. It is a good idea, isn't it?
+* Private/secure files: they are stored in database, because they can not be accessible
+  by the OS user running the web server at the physical machine. However, storing in
+  database just makes it harder to be accessible, not entirely secure. Well, it's hard.
+So, after written these considerations, I think only the "protected files" mentioned
+above needs to be implemented. And it can be implemented using existing page model ;-)
+Only more conditional checking in "edit" and "show" actions. Pretty good. Fine enough.
+Sleepy. Write it tomorrow.
 
 2011/08/18
 ==========
