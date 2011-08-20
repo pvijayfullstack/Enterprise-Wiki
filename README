@@ -12,6 +12,7 @@ Serve plain texts as plain as possible
 Plain text files are identified like "@[[PLAIN]]"
 Source codes are recommended to be stored as plain text files.
 
+
 2011/08/19
 ==========
 Restrict /admin access to super users (admin?)
@@ -57,6 +58,7 @@ above needs to be implemented. And it can be implemented using existing page mod
 Only more conditional checking in "edit" and "show" actions. Pretty good. Fine enough.
 Sleepy. Write it tomorrow.
 
+
 2011/08/18
 ==========
 Add role model: title:string
@@ -96,6 +98,7 @@ Add <math> support using MathJax
 * Some markups will escape <math> tags, and they also process backslashes.
   RDoc works this way and it is really bothering. I handle it manually
   by replacing \ with \\ between <math> and </math>
+
 
 2011/08/17
 ==========
