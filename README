@@ -1,12 +1,21 @@
+2011/08/20
+==========
+# TODO Serve plain texts as plain as possible
+  So we can store javascript/css files in pages, and they can be edited directly online
+# TODO Add file uploading
+
+Use title field of page model to identify different type of underlying model (page, file, etc.)
+Page's title is normal
+Special title syntax identified: "@[[XXX]]" e.g. "@[[FILE]]". I think it is special enough.
+
+
 2011/08/19
 ==========
 Restrict /admin access to super users (admin?)
 Already deployed with LightTPD + FastCGI
 About send_file and x-sendfile in Rails 3:
   http://vijaydev.wordpress.com/2010/12/15/rails-3-and-apache-x-sendfile/
-# TODO Serve plain texts as plain as possible
-  So we can store javascript/css files in pages, and they can be edited directly online
-# TODO Add file uploading
+
 According to many sources, especially http://stackoverflow.com/questions/735147/,
 I decided to create three different models for files.
 * Public/static files: they are not versioned and stored directly in places like
