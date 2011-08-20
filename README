@@ -1,6 +1,7 @@
 2011/08/20
 ==========
 # TODO Add file uploading
+# TODO Force filling in commit messages (an extra field needed)
 
 Use title field of page model to identify different type of underlying model (page, file, etc.)
 Page's title is normal
