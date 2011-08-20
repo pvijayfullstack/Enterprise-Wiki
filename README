@@ -7,7 +7,8 @@
 Use title field of page model to identify different type of underlying model (page, file, etc.)
 Page's title is normal
 Special title syntax identified: "@[[XXX]]" e.g. "@[[FILE]]". I think it is special enough.
-
+Plain text files are identified like "@[[PLAIN]]"
+Source codes are recommended to be stored as plain text files.
 
 2011/08/19
 ==========
