@@ -57,6 +57,7 @@ Page show:
 Add markups for page body. Reference https://github.com/github/markup
 
 .markdown -- https://github.com/tanoku/redcarpet
+    Why Redcarpet: https://github.com/blog/832-rolling-out-the-redcarpet
 .textile -- gem install RedCloth
     RedCloth.new(content).to_html
 .rdoc -- gem install rdoc -v 3.6.1
