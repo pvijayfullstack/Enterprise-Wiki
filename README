@@ -4,6 +4,8 @@ Restrict /admin access to super users (admin?)
 Already deployed with LightTPD + FastCGI
 About send_file and x-sendfile in Rails 3:
   http://vijaydev.wordpress.com/2010/12/15/rails-3-and-apache-x-sendfile/
+# TODO Serve plain texts as plain as possible
+  So we can store javascript/css files in pages, and they can be edited directly online
 # TODO Add file uploading
 According to many sources, especially http://stackoverflow.com/questions/735147/,
 I decided to create three different models for files.
