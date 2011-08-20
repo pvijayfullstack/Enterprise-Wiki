@@ -28,4 +28,8 @@ class Page < ActiveRecord::Base
     p.revision = revision + 1
     p
   end
+  
+  def plain?
+    title == "@[[PLAIN]]"
+  end
 end

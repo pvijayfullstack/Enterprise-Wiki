@@ -101,7 +101,11 @@ private
   
   def show
     if can_show_page?
-      render :show
+      if @page.plain?
+        render :text => @page.body, :content_type => 'text/plain'
+      else
+        render :show
+      end
     else
       error 401
     end

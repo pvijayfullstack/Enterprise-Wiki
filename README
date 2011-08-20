@@ -1,12 +1,13 @@
 2011/08/20
 ==========
-# TODO Serve plain texts as plain as possible
-  So we can store javascript/css files in pages, and they can be edited directly online
 # TODO Add file uploading
 
 Use title field of page model to identify different type of underlying model (page, file, etc.)
 Page's title is normal
 Special title syntax identified: "@[[XXX]]" e.g. "@[[FILE]]". I think it is special enough.
+
+Serve plain texts as plain as possible
+  So we can store javascript/css files in pages, and they can be edited directly online
 Plain text files are identified like "@[[PLAIN]]"
 Source codes are recommended to be stored as plain text files.
 
