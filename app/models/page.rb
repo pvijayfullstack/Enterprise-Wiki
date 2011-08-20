@@ -32,4 +32,8 @@ class Page < ActiveRecord::Base
   def plain?
     title == "@[[PLAIN]]"
   end
+  
+  def file?
+    title == "@[[FILE]]"
+  end
 end

@@ -8,17 +8,18 @@ class PageController < ApplicationController
   def view
     if edit?
       try_edit
+    elsif upload?
+      try_upload
     else
       try_show
     end
   end
   
   def save
-    @page = Page.new(params[:page])
-    if @page.save
-      redirect_to @page.to_s
+    if save_file?
+      save_file
     else
-      render :edit
+      save_page
     end
   end
   
@@ -67,8 +68,20 @@ private
     user_signed_in? and current_user.can_edit? @path
   end
   
+  def can_upload_path?
+    user_signed_in? and current_user.can_upload? @path
+  end
+  
+  def save_file?
+    !!params[:somefile]
+  end
+  
   def authorize_save
-    error 422 unless can_edit_path?
+    if save_file?
+      error 422 unless can_upload_path?
+    else
+      error 422 unless can_edit_path?
+    end
   end
   
   def get_page
@@ -103,6 +116,8 @@ private
     if can_show_page?
       if @page.plain?
         render :text => @page.body, :content_type => 'text/plain'
+      elsif @page.file?
+        # TODO send file here
       else
         render :show
       end
@@ -130,6 +145,36 @@ private
       @page = Page.new(:path => @path, :editor => current_user, :revision => 1)
     end
     render :edit
+  end
+  
+  def save_page
+    @page = Page.new(params[:page])
+    if @page.save
+      redirect_to @page.to_s
+    else
+      render :edit
+    end
+  end
+  
+  def upload?
+    params[:upload] or params[:do] == "upload"
+  end
+  
+  def try_upload
+    if can_upload_path?
+      upload
+    else
+      error 401
+    end
+  end
+  
+  def upload
+    # TODO read previous private/protected flag info.
+    render :upload
+  end
+  
+  def save_file
+    # TODO save file in params[:somefile] and create @page
   end
   
 end

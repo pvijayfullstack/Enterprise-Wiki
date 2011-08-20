@@ -1,0 +1,15 @@
+<h1>Test#upload</h1>
+<% form_tag 'upload', :multipart => true do %>
+  <p>
+    File: <%= file_field_tag 'somefile' %>
+  </p>
+  <p>
+    <%= submit_tag 'Upload' %>
+  </p>
+  <% if @the_file %>
+    <pre><%= @the_file.inspect %></pre>
+	  <pre><%= @the_file.tempfile.path %></pre>
+	  <pre><%= @the_file.tempfile.mtime %></pre>
+	  <pre><%= @the_file.tempfile.size %></pre>
+  <% end %>
+<% end %>

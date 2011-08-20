@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     can? :edit, path
   end
   
+  def can_upload? (path)
+    can? :upload, path
+  end
+  
   def can? (action, path)
     if admin?
       true

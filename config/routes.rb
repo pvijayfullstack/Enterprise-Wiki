@@ -7,6 +7,7 @@ EnterpriseWiki::Application.routes.draw do
   root :to => redirect('/Home')
   
   match '/test/download' => 'test#download'
+  match '/test/upload'   => 'test#upload'
   
   # do not start with "admin", 
   # or do not start with "admin/" 
