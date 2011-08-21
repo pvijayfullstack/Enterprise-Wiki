@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110818060125) do
+ActiveRecord::Schema.define(:version => 20110821053558) do
 
   create_table "markups", :force => true do |t|
     t.string   "title",      :limit => 100, :null => false
@@ -22,16 +22,17 @@ ActiveRecord::Schema.define(:version => 20110818060125) do
   add_index "markups", ["title"], :name => "index_markups_on_title", :unique => true
 
   create_table "pages", :force => true do |t|
-    t.string   "path",         :limit => 100,                   :null => false
-    t.string   "title",        :limit => 100,                   :null => false
-    t.text     "body",                                          :null => false
-    t.integer  "editor_id",                                     :null => false
-    t.integer  "revision",                                      :null => false
-    t.boolean  "is_private",                  :default => true, :null => false
-    t.boolean  "is_protected",                :default => true, :null => false
-    t.integer  "markup_id",                                     :null => false
+    t.string   "path",           :limit => 100,                   :null => false
+    t.string   "title",          :limit => 100,                   :null => false
+    t.text     "body",                                            :null => false
+    t.integer  "editor_id",                                       :null => false
+    t.integer  "revision",                                        :null => false
+    t.boolean  "is_private",                    :default => true, :null => false
+    t.boolean  "is_protected",                  :default => true, :null => false
+    t.integer  "markup_id",                                       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "commit_message"
   end
 
   add_index "pages", ["path", "revision"], :name => "index_pages_on_path_and_revision", :unique => true

@@ -1,1 +1,22 @@
 <h1>Page History</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>When</th>
+      <th>Who</th>
+      <th>Content Length</th>
+      <th>Commit Message</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for @page in @history %>
+    <tr>
+      <td><%= @page.created_at %></td>
+      <td><%= @page.editor %></td>
+      <td><%= @page.content_length %></td>
+      <td><%= @page.commit_message %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

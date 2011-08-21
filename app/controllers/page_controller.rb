@@ -121,6 +121,7 @@ private
   def show
     if can_show_page?
       if history?
+        @history = Page.get_history(@path)
         render :history
       elsif @page.plain?
         render :text => @page.body, :content_type => 'text/plain'

@@ -14,6 +14,10 @@ class Page < ActiveRecord::Base
     readonly.where(:path => path).order(:revision).last
   end
   
+  def self.get_history (path)
+    readonly.where(:path => path).order("revision DESC").all
+  end
+  
   def to_s
     "/#{path}"
   end
@@ -28,5 +32,17 @@ class Page < ActiveRecord::Base
   
   def file?
     markup.is? :uploaded_file
+  end
+  
+  def file_size
+    File.new(body).size
+  end
+  
+  def content_length
+    if file?
+      file_size
+    else
+      body.length
+    end
   end
 end

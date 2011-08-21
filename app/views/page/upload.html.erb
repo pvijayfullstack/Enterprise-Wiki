@@ -23,6 +23,10 @@
     <%= f.check_box :is_protected %>
   </p>
   <p>
+    <%= f.label :commit_message %>
+    <%= f.text_field :commit_message %>
+  </p>
+  <p>
     <%= f.submit "Upload" %>
   </p>
 <% end %>
