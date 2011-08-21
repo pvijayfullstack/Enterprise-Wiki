@@ -114,15 +114,17 @@ private
     end
   end
   
-  def download?
-    params[:download] or params[:do] == "download"
+  def history?
+    params[:history] or params[:do] == "history"
   end
   
   def show
     if can_show_page?
-      if @page.plain?
+      if history?
+        render :history
+      elsif @page.plain?
         render :text => @page.body, :content_type => 'text/plain'
-      elsif @page.file? and download?
+      elsif @page.file?
         send_file @page.body, :filename => @page.title
       else
         render :show
@@ -144,9 +146,17 @@ private
     end
   end
   
+  def get_editable_page
+    get_page || Page.new(:path => @path)
+  end
+  
   def edit
-    @page = build_page
-    render :edit
+    @page = get_editable_page
+    if @page.file?
+      redirect_to "#{@page}?do=upload"
+    else
+      render :edit
+    end
   end
   
   def build_revision
@@ -167,7 +177,9 @@ private
   
   def save_page
     @page = build_page
-    if @page.save
+    if @page.file?
+      redirect_to "#{@page}?do=upload"
+    elsif @page.save
       redirect_to @page.to_s
     else
       render :edit
@@ -203,26 +215,16 @@ private
   # Handle database transaction is easy but file system transaction
   # is hard, especially working together with the database.
   def save_file
-    if @the_file = params[:somefile]
-      base = "/data/Enterprise-Wiki"  # TODO move this constant to some other place
-      name = current_user.name
-      path = "#{base}/#{name[0..1]}/#{name[2..3]}/#{name}"
-      
-      new_filename = Digest::MD5.hexdigest(@the_file.original_filename + Time.now.to_s)
-      new_filepath = "#{path}/#{new_filename}"
-      tmp_filepath = @the_file.tempfile.path
-      
-      FileUtils.mkpath path
-      FileUtils.cp tmp_filepath, new_filepath
-      
+    if params[:somefile]
       @page = build_file
       if not @page.title or @page.title.empty?
-        @page.title = @the_file.original_filename
+        @page.title = params[:somefile].original_filename
       end
       @page.body = new_filepath
       
       if @page.save
-        redirect_to @page.to_s
+        save_uploaded_file params[:somefile]
+        redirect_to "#{@page}?do=history"
       else
         render :upload
       end
@@ -230,6 +232,19 @@ private
       @page = build_file
       render :upload
     end
+  end
+  
+  def save_uploaded_file (file)
+    base = "/data/Enterprise-Wiki"  # TODO move this constant to some other place
+    name = current_user.name
+    path = "#{base}/#{name[0..1]}/#{name[2..3]}/#{name}"
+    
+    new_filename = Digest::MD5.hexdigest(file.original_filename + Time.now.to_s)
+    new_filepath = "#{path}/#{new_filename}"
+    tmp_filepath = file.tempfile.path
+    
+    FileUtils.mkpath path
+    FileUtils.cp tmp_filepath, new_filepath
   end
   
 end
