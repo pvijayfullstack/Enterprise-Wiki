@@ -125,6 +125,8 @@ private
       elsif @page.plain?
         render :text => @page.body, :content_type => 'text/plain'
       elsif @page.file?
+        # TODO if it is an image, send a dummy image saying unauthorized
+        #      instead of breaking the image directly
         send_file @page.body, :filename => @page.title
       else
         render :show
@@ -199,6 +201,7 @@ private
   end
   
   def upload
+    # TODO previous protection flags not loaded
     @page = build_file
     render :upload
   end
@@ -209,6 +212,18 @@ private
     p
   end
   
+  def original_filename
+    params[:somefile].original_filename
+  end
+  
+  def tmp_filepath
+    params[:somefile].tempfile.path
+  end
+  
+  def build_new_filename
+    Digest::MD5.hexdigest(original_filename + Time.now.to_s)
+  end
+  
   # Currently this action is not transactional.
   # It means that it is supposed both the file system operations
   # and the database operations are all executed successfully.
@@ -216,14 +231,20 @@ private
   # is hard, especially working together with the database.
   def save_file
     if params[:somefile]
+      base = "/data/Enterprise-Wiki"  # TODO move this constant to some other place
+      name = current_user.name
+      path = "#{base}/#{name[0..1]}/#{name[2..3]}/#{name}"
+      
       @page = build_file
       if not @page.title or @page.title.empty?
-        @page.title = params[:somefile].original_filename
+        @page.title = original_filename
       end
-      @page.body = new_filepath
+      @page.body = "#{path}/#{build_new_filename}"
       
       if @page.save
-        save_uploaded_file params[:somefile]
+        FileUtils.mkpath path
+        FileUtils.cp tmp_filepath, @page.body
+        
         redirect_to "#{@page}?do=history"
       else
         render :upload
@@ -232,19 +253,6 @@ private
       @page = build_file
       render :upload
     end
-  end
-  
-  def save_uploaded_file (file)
-    base = "/data/Enterprise-Wiki"  # TODO move this constant to some other place
-    name = current_user.name
-    path = "#{base}/#{name[0..1]}/#{name[2..3]}/#{name}"
-    
-    new_filename = Digest::MD5.hexdigest(file.original_filename + Time.now.to_s)
-    new_filepath = "#{path}/#{new_filename}"
-    tmp_filepath = file.tempfile.path
-    
-    FileUtils.mkpath path
-    FileUtils.cp tmp_filepath, new_filepath
   end
   
 end
