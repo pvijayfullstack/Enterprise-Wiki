@@ -1,8 +1,14 @@
-2011/08/20
+2011/08/21
 ==========
 # TODO Add file uploading
 # TODO Force filling in commit messages (an extra field needed)
+# TODO Add page previewing
+# TODO Add themes
+# TODO Add universal markup editor
 
+
+2011/08/20
+==========
 Use title field of page model to identify different type of underlying model (page, file, etc.)
 Page's title is normal
 Special title syntax identified: "@[[XXX]]" e.g. "@[[FILE]]". I think it is special enough.
