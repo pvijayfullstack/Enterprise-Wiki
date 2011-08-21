@@ -201,8 +201,7 @@ private
   end
   
   def upload
-    # TODO previous protection flags not loaded
-    @page = build_file
+    @page = get_editable_page
     render :upload
   end
   
