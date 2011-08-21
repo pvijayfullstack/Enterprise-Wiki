@@ -1,6 +1,5 @@
 2011/08/21
 ==========
-# TODO Add file uploading
 # TODO Force filling in commit messages (an extra field needed)
 # TODO Add page previewing
 # TODO Add themes
@@ -11,6 +10,9 @@ I think it will be a better way for doing this.
 
 Since files uploaded by different user are stored in different sub-directories,
 the new file name can be a digest just like MD5(original_name + timestamp)
+
+Page model with file type/markup uses title as the parameter to send_file,
+i.e. the file name provided to the browser for naming local download copy.
 
 
 2011/08/20

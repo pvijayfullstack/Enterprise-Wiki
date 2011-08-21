@@ -114,12 +114,16 @@ private
     end
   end
   
+  def download?
+    params[:download] or params[:do] == "download"
+  end
+  
   def show
     if can_show_page?
       if @page.plain?
         render :text => @page.body, :content_type => 'text/plain'
-        #elsif @page.file?
-        # TODO send file here
+      elsif @page.file? and download?
+        send_file @page.body, :filename => @page.title
       else
         render :show
       end
@@ -212,7 +216,11 @@ private
       FileUtils.cp tmp_filepath, new_filepath
       
       @page = build_file
+      if not @page.title or @page.title.empty?
+        @page.title = @the_file.original_filename
+      end
       @page.body = new_filepath
+      
       if @page.save
         redirect_to @page.to_s
       else
