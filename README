@@ -6,6 +6,12 @@
 # TODO Add themes
 # TODO Add universal markup editor
 
+Special title syntax mechanism is replaced by creating special markup types.
+I think it will be a better way for doing this.
+
+Since files uploaded by different user are stored in different sub-directories,
+the new file name can be a digest just like MD5(original_name + timestamp)
+
 
 2011/08/20
 ==========

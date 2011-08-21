@@ -1,6 +1,6 @@
-<h1>Page#edit</h1>
+<h1>Page#upload</h1>
 
-<%= form_for @page, :url => @page.to_s do |f| %>
+<%= form_for @page, :url => @page.to_s, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :path %>
@@ -11,12 +11,8 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :markup %>
-    <%= collection_select :page, :markup_id, Markup.all, :id, :title %>
-  </p>
-  <p>
-    <%= f.label :body %>
-    <%= f.text_area :body, :size => "60x12" %>
+    <%= f.label :file %>
+    <%= file_field_tag :somefile %>
   </p>
   <p>
     <%= f.label :is_private %>
@@ -27,6 +23,6 @@
     <%= f.check_box :is_protected %>
   </p>
   <p>
-    <%= f.submit "Save" %>
+    <%= f.submit "Upload" %>
   </p>
 <% end %>

@@ -2,13 +2,17 @@ class Page < ActiveRecord::Base
   belongs_to :editor, :class_name => "User", :foreign_key => "editor_id"
   belongs_to :markup
 
-  validates :path, :length => { :in => 1 .. 100 }
+  validates :path,  :length => { :in => 1 .. 100 }
   validates :title, :length => { :in => 1 .. 100 }
-  validates :body, :length => { :in => 1 .. 100000 }
+  validates :body,  :length => { :in => 1 .. 100000 }
   validates :editor_id, :presence => true
+  validates :markup_id, :presence => true
   validates :revision, :uniqueness => { :scope => :path }
   validates :revision, :numericality => { :only_integer => true, :greater_than => 0 }
-  validates :markup_id, :presence => true
+  
+  def self.find_latest_by_path (path)
+    readonly.where(:path => path).order(:revision).last
+  end
   
   def to_s
     "/#{path}"
@@ -18,22 +22,11 @@ class Page < ActiveRecord::Base
     self[:path].to_s.strip.downcase
   end
   
-  def self.find_latest_by_path (path)
-    readonly.where(:path => path).order(:revision).last
-  end
-  
-  def new_revision (attributes = {})
-    p = clone
-    attributes.each {|k,v| p[k] = v }
-    p.revision = revision + 1
-    p
-  end
-  
   def plain?
-    title == "@[[PLAIN]]"
+    markup.is? :plain_text
   end
   
   def file?
-    title == "@[[FILE]]"
+    markup.is? :uploaded_file
   end
 end

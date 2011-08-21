@@ -8,6 +8,7 @@
 
 RuleAction.create(:title => "edit")
 RuleAction.create(:title => "show")
+RuleAction.create(:title => "upload")
 
 Markup.create(:title => "Markdown")
 Markup.create(:title => "Textile")
@@ -15,3 +16,5 @@ Markup.create(:title => "RDoc")
 Markup.create(:title => "Org-mode")
 Markup.create(:title => "Creole")
 Markup.create(:title => "MediaWiki")
+Markup.create(:title => "Plain Text")
+Markup.create(:title => "Uploaded File")

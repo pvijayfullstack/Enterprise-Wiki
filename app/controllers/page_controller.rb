@@ -1,4 +1,6 @@
 require 'uri'
+require 'digest/md5'
+require 'fileutils'
 
 class PageController < ApplicationController
   before_filter :escape_path
@@ -16,7 +18,7 @@ class PageController < ApplicationController
   end
   
   def save
-    if save_file?
+    if upload_file?
       save_file
     else
       save_page
@@ -72,12 +74,12 @@ private
     user_signed_in? and current_user.can_upload? @path
   end
   
-  def save_file?
-    !!params[:somefile]
+  def upload_file?
+    params[:commit] == "Upload"
   end
   
   def authorize_save
-    if save_file?
+    if upload_file?
       error 422 unless can_upload_path?
     else
       error 422 unless can_edit_path?
@@ -116,7 +118,7 @@ private
     if can_show_page?
       if @page.plain?
         render :text => @page.body, :content_type => 'text/plain'
-      elsif @page.file?
+        #elsif @page.file?
         # TODO send file here
       else
         render :show
@@ -139,16 +141,28 @@ private
   end
   
   def edit
-    if p = get_page
-      @page = p.new_revision(:editor => current_user)
-    else
-      @page = Page.new(:path => @path, :editor => current_user, :revision => 1)
-    end
+    @page = build_page
     render :edit
   end
   
+  def build_revision
+    if p = get_page
+      p.revision + 1
+    else
+      1
+    end
+  end
+  
+  def build_page
+    p = Page.new(params[:page])
+    p.path = @path
+    p.editor = current_user
+    p.revision = build_revision
+    p
+  end
+  
   def save_page
-    @page = Page.new(params[:page])
+    @page = build_page
     if @page.save
       redirect_to @page.to_s
     else
@@ -169,12 +183,45 @@ private
   end
   
   def upload
-    # TODO read previous private/protected flag info.
+    @page = build_file
     render :upload
   end
   
+  def build_file
+    p = build_page
+    p.markup = Markup.find_by_title("Uploaded File")
+    p
+  end
+  
+  # Currently this action is not transactional.
+  # It means that it is supposed both the file system operations
+  # and the database operations are all executed successfully.
+  # Handle database transaction is easy but file system transaction
+  # is hard, especially working together with the database.
   def save_file
-    # TODO save file in params[:somefile] and create @page
+    if @the_file = params[:somefile]
+      base = "/data/Enterprise-Wiki"  # TODO move this constant to some other place
+      name = current_user.name
+      path = "#{base}/#{name[0..1]}/#{name[2..3]}/#{name}"
+      
+      new_filename = Digest::MD5.hexdigest(@the_file.original_filename + Time.now.to_s)
+      new_filepath = "#{path}/#{new_filename}"
+      tmp_filepath = @the_file.tempfile.path
+      
+      FileUtils.mkpath path
+      FileUtils.cp tmp_filepath, new_filepath
+      
+      @page = build_file
+      @page.body = new_filepath
+      if @page.save
+        redirect_to @page.to_s
+      else
+        render :upload
+      end
+    else
+      @page = build_file
+      render :upload
+    end
   end
   
 end

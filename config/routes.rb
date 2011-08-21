@@ -15,5 +15,5 @@ EnterpriseWiki::Application.routes.draw do
   page_constraints = { :path => /(?!(admin|themes|users|test)).*|(admin|themes|users|test)(?!\/).+/ }
   
   match '*path' => 'page#view', :constraints => page_constraints, :via => :get
-  match '*path' => 'page#save', :constraints => page_constraints, :via => :post
+  match '*path' => 'page#save', :constraints => page_constraints, :via => [:put, :post]
 end

@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     username
   end
   
+  def name
+    username
+  end
+  
   def title
     username
   end
