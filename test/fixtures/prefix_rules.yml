@@ -1,9 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  user_id: 1
-  prefix: MyString
+edit_home:
+  prefix: home
+  role: homepage_editor
+  rule_action: edit
 
-two:
-  user_id: 1
-  prefix: MyString
+upload_home:
+  prefix: home
+  role: homepage_uploader
+  rule_action: upload

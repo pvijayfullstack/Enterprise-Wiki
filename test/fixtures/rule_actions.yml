@@ -1,7 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: MyString
+edit:
+  title: edit
 
-two:
-  title: MyString
+show:
+  title: show
+
+upload:
+  title: upload

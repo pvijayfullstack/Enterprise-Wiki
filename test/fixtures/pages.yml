@@ -1,15 +1,56 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  path: MyString
-  title: MyString
-  body: MyText
-  editor: MyString
+home:
+  path: home
+  title: This is the homepage
+  body: hello homepage
   revision: 1
+  is_private: false
+  is_protected: false
+  commit_message: just a test
+  editor: root
+  markup: markdown
 
-two:
-  path: MyString
-  title: MyString
-  body: MyText
-  editor: MyString
+homepage_of_xjia:
+  path: ~xjia
+  title: Homepage of Xiao Jia
+  body: welcome to my homepage
   revision: 1
+  is_private: false
+  is_protected: false
+  commit_message: just a test
+  editor: xjia
+  markup: markdown
+
+a_private_page:
+  path: home/a_private_page
+  title: A private page
+  body: this is a private page
+  revision: 1
+  is_private: true
+  is_protected: false
+  commit_message: just a test
+  editor: root
+  markup: markdown
+
+a_protected_page:
+  path: home/a_protected_page
+  title: A protected page
+  body: this is a protected page
+  revision: 1
+  is_private: false
+  is_protected: true
+  commit_message: just a test
+  editor: root
+  markup: markdown
+
+plain_txt:
+  path: home/plain.txt
+  title: plain.txt
+  body: hello plain text
+  revision: 1
+  is_private: false
+  is_protected: false
+  commit_message: just a test
+  editor: xjia
+  markup: plain_text

@@ -1,7 +1,25 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: MyString
+markdown:
+  title: Markdown
 
-two:
-  title: MyString
+textile:
+  title: Textile
+
+rdoc:
+  title: RDoc
+
+orgmode:
+  title: Org-mode
+
+creole:
+  title: Creole
+
+mediawiki:
+  title: MediaWiki
+
+plain_text:
+  title: Plain Text
+
+uploaded_file:
+  title: Uploaded File

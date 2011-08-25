@@ -1,7 +1,8 @@
 2011/08/25
 ==========
 Add page previewing
-# TODO Add fixtures and unit tests
+Add fixtures
+# TODO Add tests
 # TODO Go back to the last accessible page after signed in
 # TODO Add themes
 # TODO Add universal markup editor
