@@ -1,13 +1,11 @@
 EnterpriseWiki::Application.routes.draw do
-  get "test/download"
-
   devise_for :users
   themes_for_rails
   
   root :to => redirect('/home')
   
-  match '/test/download' => 'test#download'
-  match '/test/upload'   => 'test#upload'
+  # match '/test/download' => 'test#download'
+  # match '/test/upload'   => 'test#upload'
   
   # do not start with "admin", 
   # or do not start with "admin/" 
