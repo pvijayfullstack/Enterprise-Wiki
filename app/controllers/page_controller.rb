@@ -150,7 +150,9 @@ private
   end
   
   def get_editable_page
-    get_page || Page.new(:path => @path)
+    page = get_page || Page.new(:path => @path)
+    page.commit_message = ""
+    page
   end
   
   def edit
