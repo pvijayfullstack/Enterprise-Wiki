@@ -77,7 +77,7 @@ private
   end
   
   def upload_file?
-    params[:commit] == "Upload"
+    params[:commit] == "Upload file"
   end
   
   def authorize_save
