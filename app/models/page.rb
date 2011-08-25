@@ -27,11 +27,11 @@ class Page < ActiveRecord::Base
   end
   
   def plain?
-    markup.is? :plain_text
+    markup and markup.is? :plain_text
   end
   
   def file?
-    markup.is? :uploaded_file
+    markup and markup.is? :uploaded_file
   end
   
   def file_size
