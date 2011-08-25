@@ -9,7 +9,7 @@ module PageHelper
     def initialize (helper, markup, text)
       @helper = helper
       @markup = markup
-      @text   = text
+      @text   = text.clone
     end
     
     def to_s
