@@ -4,7 +4,7 @@ EnterpriseWiki::Application.routes.draw do
   devise_for :users
   themes_for_rails
   
-  root :to => redirect('/Home')
+  root :to => redirect('/home')
   
   match '/test/download' => 'test#download'
   match '/test/upload'   => 'test#upload'
