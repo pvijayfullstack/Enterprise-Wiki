@@ -20,6 +20,8 @@ class PageController < ApplicationController
   def save
     if upload_file?
       save_file
+    elsif show_preview?
+      show_preview
     else
       save_page
     end
@@ -187,6 +189,20 @@ private
     elsif @page.save
       redirect_to @page.to_s
     else
+      render :edit
+    end
+  end
+  
+  def show_preview?
+    params[:commit] == "Show preview"
+  end
+  
+  def show_preview
+    @page = build_page
+    if @page.file?
+      redirect_to "#{@page}?do=upload"
+    else
+      @preview = true
       render :edit
     end
   end

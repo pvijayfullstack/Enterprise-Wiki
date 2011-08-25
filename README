@@ -1,11 +1,14 @@
-2011/08/21
+2011/08/25
 ==========
-# TODO Add page previewing
+Add page previewing
 # TODO Add themes
 # TODO Add universal markup editor
 # TODO "This is a minor edit"
 # TODO "Watch this page"
 
+
+2011/08/21
+==========
 Special title syntax mechanism is replaced by creating special markup types.
 I think it will be a better way for doing this.
 

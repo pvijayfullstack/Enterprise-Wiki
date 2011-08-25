@@ -1,5 +1,18 @@
 <h1>Page#edit</h1>
 
+<% if @preview %>
+<div class="preview">
+  <h2>Preview</h2>
+  <div class="previewnote">
+    <p>
+      <b>Remember that this is only a preview.</b>
+      Your changes have not yet been saved!
+    </p>
+  </div>
+  <div class="page_body"><%= render_markup(@page.markup, @page.body).html_safe %></div>
+</div>
+<% end %>
+
 <%= form_for @page, :url => @page.to_s do |f| %>
   <%= f.error_messages %>
   <p>
@@ -31,6 +44,7 @@
     <%= f.text_field :commit_message %>
   </p>
   <p>
-    <%= f.submit "Save" %>
+    <%= f.submit "Save page" %>
+    <%= f.submit "Show preview" %>
   </p>
 <% end %>
