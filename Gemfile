@@ -17,6 +17,9 @@ gem 'org-ruby'
 gem 'creole'
 gem 'wikicloth'
 
+gem 'albino'
+gem 'nokogiri'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

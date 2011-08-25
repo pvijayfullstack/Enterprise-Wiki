@@ -13,13 +13,9 @@ module PageHelper
     end
     
     def to_s
-      if respond_to? @markup.to_sym
-        send @markup.to_sym
-      else
-        "<pre>#{ h @text }</pre>"
-      end
+      syntax_highlighter render
     end
-  
+    
   protected
     MARKDOWN_OPTIONS = {
       :no_intra_emphasis   => true,
@@ -29,8 +25,24 @@ module PageHelper
       :strikethrough       => true,
       :lax_html_blocks     => false,
       :space_after_headers => false,
-      :superscript         => false
+      :superscript         => false,
     }
+    
+    def render
+      if respond_to? @markup.to_sym
+        send @markup.to_sym
+      else
+        "<pre>#{ h @text }</pre>"
+      end
+    end
+    
+    def syntax_highlighter(html)
+      doc = Nokogiri::HTML(html)
+      doc.search("//pre/code[@class]").each do |code|
+        code.parent.replace Albino.colorize(code.text.rstrip, code[:class])
+      end
+      doc.css('body').inner_html.to_s
+    end
     
     def markdown
       html = Redcarpet::Markdown.new(Redcarpet::Render::HTML, MARKDOWN_OPTIONS).render(@text)
