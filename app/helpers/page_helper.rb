@@ -41,6 +41,9 @@ module PageHelper
       doc.search("//pre/code[@class]").each do |code|
         code.parent.replace Albino.colorize(code.text.rstrip, code[:class])
       end
+      doc.search("//pre[@class]").each do |pre|
+        pre.replace Albino.colorize(pre.text.rstrip, pre[:class])
+      end
       doc.css('body').inner_html.to_s
     end
     
