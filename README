@@ -3,9 +3,10 @@
 Add page previewing
 Add fixtures
 Add syntax highlighting with Pygments and Albino
+# TODO Add themes
+# TODO Add /sitemap (for human) and /sitemap.xml (for crawler)
 # TODO Add tests
 # TODO Go back to the last accessible page after signed in
-# TODO Add themes
 # TODO Add universal markup editor
 # TODO "This is a minor edit"
 # TODO "Watch this page"
