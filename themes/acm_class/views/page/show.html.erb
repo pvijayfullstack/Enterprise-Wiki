@@ -1,0 +1,4 @@
+<% content_for :title do %><%= @page.title %><% end %>
+<% content_for :markup do %><%= @page.markup.to_sym %><% end %>
+
+<%= render_markup(@page.markup, @page.body).html_safe %>

@@ -134,4 +134,8 @@ module PageHelper
   def render_markup (markup, text)
     MarkupRenderer.new(self, markup, text).to_s
   end
+  
+  def nav_active_tag (path_name)
+    params[:path] == path_name ? "active" : ""
+  end
 end
