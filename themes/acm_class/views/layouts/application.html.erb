@@ -7,6 +7,7 @@
   <meta name="description" content="上海交通大学ACM班, <%= yield :title %>"/>
   <%= stylesheet_link_tag :all %>
   <%= theme_stylesheet_link_tag :main %>
+  <%= theme_stylesheet_link_tag :topic_nav %>
 </head>
 <body>
   <div id="main">
@@ -36,9 +37,55 @@
     <div class="subpage" id="content">
       <div class="inner-page">
         <div class="newspaper">
-          <div class="singlecolumn">
-            <div class="zh_page_body <%= yield :markup %>">
-              <%= yield %>
+          <div id="blog-post">
+            <!-- TODO breadcrumb -->
+            <div class="post-content">
+              <div class="zh_page_body <%= yield :markup %>">
+                <%= yield %>
+              </div>
+            </div>
+            <div class="post-meta">
+              <!-- TODO navigation -->
+              <div class="topic_nav">
+              <% if topic_is? '班级介绍' %>
+              <h3>班级介绍</h3>
+              <ul>
+                <li><a href="/班级介绍/大事记">大事记</a></li>
+                <li><a href="/班级介绍/教育理念">教育理念</a></li>
+                <li><a href="/班级介绍/任课教师">任课教师</a></li>
+                <li><a href="/班级介绍/学子风采">学子风采</a></li>
+                <li><a href="/班级介绍/班级标志">班级标志</a></li>
+              </ul>
+              <% elsif topic_is? '招生信息' %>
+              <h3>招生信息</h3>
+              <ul>
+                <li><a href="/招生信息/招生简章">招生简章</a></li>
+                <li><a href="/招生信息/常见问题">常见问题</a></li>
+                <li><a href="/招生信息/在线提问">在线提问</a></li>
+              </ul>
+              <% elsif topic_is? 'courses' %>
+              <h3>课程中心</h3>
+              <ul>
+                <li><a href="/courses/培养计划">培养计划</a></li>
+                <li><a href="/courses/教学实践">教学实践</a></li>
+                <li><a href="/courses/网上课堂">网上课堂</a></li>
+              </ul>
+              <% elsif topic_is? '科研成果' %>
+              <h3>科研成果</h3>
+              <ul>
+                <!-- TODO -->
+              </ul>
+              <% elsif topic_is? '课余生活' %>
+              <h3>课余生活</h3>
+              <ul>
+                <!-- TODO -->
+              </ul>
+              <% elsif topic_is? 'icpc' %>
+                <!-- TODO -->
+              <% else %>
+                <!-- TODO -->
+              <% end %>
+              </div>
             </div>
           </div>
         </div>

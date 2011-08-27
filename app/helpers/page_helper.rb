@@ -138,4 +138,8 @@ module PageHelper
   def nav_active_tag (path_name)
     params[:path] == path_name ? "active" : ""
   end
+  
+  def topic_is? (path_name)
+    "#{params[:path]}/".starts_with? "#{path_name}/"
+  end
 end

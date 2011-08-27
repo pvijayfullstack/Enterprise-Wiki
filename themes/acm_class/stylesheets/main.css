@@ -85,10 +85,6 @@ ul li p {
     margin: 29px 0;
 }
 
-ul li:before {
-    content: "» ";
-}
-
 img {
     border:0;
 }
