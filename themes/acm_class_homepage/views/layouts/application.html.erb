@@ -5,9 +5,7 @@
   <meta charset="UTF-8"/>
   <meta name="author" content="ACM Infrastructure Working Group"/>
   <meta name="description" content="上海交通大学ACM班"/>
-  <%= stylesheet_link_tag :all %>
   <%= theme_stylesheet_link_tag :main %>
-  <%= csrf_meta_tag %>
 </head>
 <body>
   <div id="main">
@@ -21,13 +19,13 @@
         <div id="nav" class="nav">
           <div class="navlist">
             <ul class="nav">
-              <li class="home active"><a href="<%= root_path %>">首页</a></li>
-              <li><a href="#">班级介绍</a></li>
-              <li><a href="#">招生信息</a></li>
-              <li><a href="#">课程中心</a></li>
-              <li><a href="#">科研成果</a></li>
-              <li><a href="#">课余生活</a></li>
-              <li><a href="#">ACM竞赛</a></li>
+              <li class="active"><a href="<%= root_path %>">首页</a></li>
+              <li><a href="/班级介绍">班级介绍</a></li>
+              <li><a href="/招生信息">招生信息</a></li>
+              <li><a href="/课程中心">课程中心</a></li>
+              <li><a href="/科研成果">科研成果</a></li>
+              <li><a href="/课余生活">课余生活</a></li>
+              <li><a href="/ACM竞赛">ACM竞赛</a></li>
             </ul>
           </div><!-- END .navlist -->
         </div><!-- END #nav -->
@@ -47,7 +45,9 @@
       </div><!-- END #splash -->
 
       <div id="content">
-        <%= yield %>
+        <div class="newspaper">
+          <%= yield %>
+        </div>
       </div>
 
     </div><!-- END .front-page -->
