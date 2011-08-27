@@ -132,6 +132,9 @@ private
         #      instead of breaking the image directly
         send_file @page.body, :filename => @page.title
       else
+        if @page.theme
+          theme @page.theme.title
+        end
         render :show
       end
     else

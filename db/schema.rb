@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821053558) do
+ActiveRecord::Schema.define(:version => 20110827013845) do
 
   create_table "markups", :force => true do |t|
     t.string   "title",      :limit => 100, :null => false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20110821053558) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "commit_message"
+    t.integer  "theme_id"
   end
 
   add_index "pages", ["path", "revision"], :name => "index_pages_on_path_and_revision", :unique => true
@@ -82,6 +83,12 @@ ActiveRecord::Schema.define(:version => 20110821053558) do
   end
 
   add_index "rule_actions", ["title"], :name => "index_rule_actions_on_title", :unique => true
+
+  create_table "themes", :force => true do |t|
+    t.string   "title",      :limit => 100, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username",             :limit => 40,                     :null => false

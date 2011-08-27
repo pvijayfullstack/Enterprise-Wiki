@@ -32,6 +32,10 @@
     <%= f.text_area :body, :size => "60x12" %>
   </p>
   <p>
+    <%= f.label :theme %>
+    <%= collection_select :page, :theme_id, Theme.all, :id, :title, :prompt => true %>
+  </p>
+  <p>
     <%= f.label :is_private %>
     <%= f.check_box :is_private %>
   </p>

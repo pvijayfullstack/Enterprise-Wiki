@@ -1,6 +1,7 @@
 class Page < ActiveRecord::Base
   belongs_to :editor, :class_name => "User", :foreign_key => "editor_id"
   belongs_to :markup
+  belongs_to :theme
 
   validates :path,  :length => { :in => 1 .. 100 }
   validates :title, :length => { :in => 1 .. 100 }
