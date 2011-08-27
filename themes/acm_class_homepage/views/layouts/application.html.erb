@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>上海交通大学ACM班</title>
+  <meta charset="UTF-8"/>
+  <meta name="author" content="ACM Infrastructure Working Group"/>
+  <meta name="description" content="上海交通大学ACM班"/>
+  <%= stylesheet_link_tag :all %>
+  <%= theme_stylesheet_link_tag :main %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id="main">
+    <div id="heading">
+      <div class="inner">
+        <h1>
+          <a href="<%= root_path %>">
+            <%= theme_image_tag "head-logo.png", :title => "上海交通大学ACM班" %>
+          </a>
+        </h1>
+        <div id="nav" class="nav">
+          <div class="navlist">
+            <ul class="nav">
+              <li class="home active"><a href="<%= root_path %>">首页</a></li>
+              <li><a href="#">班级介绍</a></li>
+              <li><a href="#">招生信息</a></li>
+              <li><a href="#">课程中心</a></li>
+              <li><a href="#">科研成果</a></li>
+              <li><a href="#">课余生活</a></li>
+              <li><a href="#">ACM竞赛</a></li>
+            </ul>
+          </div><!-- END .navlist -->
+        </div><!-- END #nav -->
+      </div><!-- END .inner -->
+    </div><!-- END #heading -->
+
+    <div class="front-page">
+      <div id="splash">
+        <div class="slideshow">
+          <% for i in 1..4 do %>
+          <div class="content">
+            <%= theme_image_tag "splash-sjtu-#{i}.png", :size => "960x282" %>
+          </div>
+          <% end %>
+        </div>
+        <div id="pager"></div>
+      </div><!-- END #splash -->
+
+      <div id="content">
+        <%= yield %>
+      </div>
+
+    </div><!-- END .front-page -->
+
+  </div><!-- END #main -->
+
+  <div id="footer">
+    <p class="part-1">Powered by <a class="b" target="_blank" href="http://github.com/oipn4e2/Enterprise-Wiki">Enterprise Wiki</a></p>
+    <p class="part-2">Copyright &copy; 2011 <a href="<%= root_path %>">ACM Class</a>. All rights reserved.</p>
+  </div>
+
+  <%= theme_javascript_include_tag :site %>
+  <%= yield :mathjax %>
+</body>
+</html>
