@@ -1,28 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EnterpriseWiki</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <meta charset="UTF-8"/>
+  <title><%= yield(:title) || "Enterprise Wiki" %></title>
+  <%= stylesheet_link_tag "reset" %>
+  <%= stylesheet_link_tag "style" %>
+  <%= stylesheet_link_tag "style_blue" %>
+  <%= stylesheet_link_tag "pygments" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <div id="header_wrap">
+    <div id="header">
+      <%= image_tag "header_gradient_blue.jpg", :class => "gradient" %>
+      <a href="<%= root_path %>">
+        <%= image_tag "logo_blue.png", :class => "logo" %>
+      </a>
+      
+      <ul class="navigation">
+        <li class="current_page_item"><a href="#" title="Page">Page</a></li>
+        <li class="page_item"><a href="#" title="Edit">Edit</a></li>
+        <li class="page_item"><a href="#" title="History">History</a></li>
+      </ul><!-- END navigation -->
+      
+    </div><!-- END header -->
+  </div><!-- END header_wrap -->
+  
+  <!-- TODO add notices and alerts -->
 
-<div id="user_nav">
-  <%= link_to "Home", root_path %> |
-  <% if user_signed_in? %>
-    Signed in as <%= current_user %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "sign in", new_user_session_path %>
-  <% end %>
-</div>
+  <div id="page_wrap">
+    <div id="page" class="clearfix">
+    
+      <div id="sidebar">
+    		<h3>Sign In</h3>
+		    <ul class="widget">
+			    <li>
+      			<form>
+      				<fieldset>
+        				<label for="log">User 
+                  <input type="text" size="22" class="text" />
+                </label>
+        				<label for="pwd">Password 
+                  <input type="password" size="22" class="text" />
+                </label>
+        				<p>
+                  <label for="rememberme"><input type="checkbox" class="checkbox" /> Remember me</label>
+                  <input type="submit" value="Send" class="button" />
+                </p>
+              </fieldset>
+      			</form>
+			    </li>
+				  <li><a href="#">Recover password</a></li>
+		    </ul><!-- END .users -->
+        <div id="user_nav">
+          <%= link_to "Home", root_path %> |
+          <% if user_signed_in? %>
+            Signed in as <%= current_user %>. Not you?
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <%= link_to "sign in", new_user_session_path %>
+          <% end %>
+        </div>
+	    </div><!-- END #sidebar -->
+		  
+      <div id="content">
+        <h1><%= yield :title %></h1>
+        <div class="post_wrap">
+          <div class="post">
+            <%= yield %>
+          </div><!-- END .post -->
+        </div><!-- END .post-wrap -->
+      </div><!-- END #content -->
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+    </div><!-- END #page -->
+  </div><!-- END #page_wrap -->
 
-<%= yield %>
+  <div class="clear"></div>
 
-<%= yield :mathjax %>
+  <div id="footer_wrap">
+    <div id="footer">
+      <p class="left">Powered by <a href="http://github.com/oipn4e2/Enterprise-Wiki">Enterprise Wiki</a></p>
+      <p style="text-align:right">Copyright &copy; 2011 Xiao Jia. All rights reserved.</p>
+    </div><!-- END #footer -->
+  </div><!-- END #footer_wrap -->
+  
+  <%= yield :mathjax %>
 </body>
 </html>

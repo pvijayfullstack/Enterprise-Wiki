@@ -5,9 +5,9 @@
   <meta charset="UTF-8"/>
   <meta name="author" content="ACM Infrastructure Working Group"/>
   <meta name="description" content="上海交通大学ACM班, <%= yield :title %>"/>
-  <%= stylesheet_link_tag :all %>
-  <%= theme_stylesheet_link_tag :main %>
-  <%= theme_stylesheet_link_tag :topic_nav %>
+  <%= theme_stylesheet_link_tag "main" %>
+  <%= theme_stylesheet_link_tag "topic_nav" %>
+  <%= stylesheet_link_tag "pygments" %>
 </head>
 <body>
   <div id="main">

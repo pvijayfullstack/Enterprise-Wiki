@@ -1,0 +1,37 @@
+/* Link Color Styles */
+a:link, a:visited {
+	color: #0080a0;
+	text-decoration: none;
+}
+a:hover {
+	color: #000;
+	text-decoration: none;
+}
+a:active {
+	color: #0080a0;
+	text-decoration: none;
+}
+/* Header Background Color */
+#header_wrap {
+	background: #003150;
+}
+/* Header Colors */
+h1 {
+	color: #004060;
+}
+#sidebar h3 {
+	color: #004060;
+}
+/* Page Navigation Colors */
+#header .navigation li a {
+	background: #004768;
+	color: #fff;
+	border: 1px solid #004768;
+}
+#header .navigation li a:hover, 
+#header .navigation li.current_page_item a,
+#header .navigation li.current_page_parent a {
+	background: #fff;
+	color: #004768;
+	border-color: #fff;
+}
