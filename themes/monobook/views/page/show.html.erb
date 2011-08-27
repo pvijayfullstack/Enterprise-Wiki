@@ -1,0 +1,5 @@
+<% content_for :title, @page.title %>
+<%= render_markup(@page.markup, @page.body).html_safe %>
+<% content_for :lastmod do %>
+  <li id="lastmod">此页面最后修订于 <%= @page.updated_at %></li>
+<% end %>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="generator" content="Enterprise Wiki"/>
+  <title><%= yield :title %></title>
+  <%= theme_stylesheet_link_tag "shared" %>
+  <%= theme_stylesheet_link_tag "main" %>
+  <!--[if lt IE 5.5000]><%= theme_stylesheet_link_tag "IE50Fixes" %><![endif]-->
+  <!--[if IE 5.5000]><%= theme_stylesheet_link_tag "IE55Fixes" %><![endif]-->
+  <!--[if IE 6]><%= theme_stylesheet_link_tag "IE60Fixes" %><![endif]-->
+  <!--[if IE 7]><%= theme_stylesheet_link_tag "IE70Fixes" %><![endif]-->
+  <%= theme_stylesheet_link_tag "ew-fix" %>
+</head>
+<body class="mediawiki ltr ns-subject skin-monobook">
+  <div id="globalWrapper">
+    <div id="column-content">
+      <div id="content">
+        <a name="top" id="top"></a>
+        <h1 id="firstHeading" class="firstHeading"><%= yield :title %></h1>
+        <div id="bodyContent">
+          <%= yield %>
+          <div class="visualClear"></div>
+        </div><!-- END bodyContent -->
+      </div><!-- END content -->
+    </div><!-- END content-content -->
+    
+    <div id="column-one">
+      <div id="p-cactions" class="portlet">
+        <h5>查看</h5>
+        <div class="pBody">
+          <ul>
+            <li id="ca-nstab-main" class="selected"><a href="#" title="查看页面内容 [c]" accesskey="c">页面</a></li>
+            <li id="ca-edit"><a href="#" title="你可编辑此页，请在保存前先预览一下。 [e]" accesskey="e">编辑</a></li>
+            <li id="ca-history"><a href="#" title="此页面的早前修订版本 [h]" accesskey="h">历史</a></li>
+          </ul>
+        </div><!-- END pBody -->
+      </div><!-- END portlet -->
+      
+      <div id="p-personal" class="portlet">
+        <h5>个人工具</h5>
+        <div class="pBody">
+          <ul>
+            <li id="pt-userpage"><a href="#" title="您的用户页 [.]" accesskey=".">Xjia</a></li>
+            <li id="pt-mytalk"><a href="#" title="您的对话页 [n]" accesskey="n" class="new">讨论页</a></li>
+            <li id="pt-preferences"><a href="#" title="您的参数设置">设置</a></li>
+            <li id="pt-watchlist"><a href="#" title="您所监视页面的更改列表 [l]" accesskey="l">监视列表</a></li>
+            <li id="pt-mycontris"><a href="#" title="您的贡献列表 [y]" accesskey="y">贡献</a></li>
+            <li id="pt-logout"><a href="#" title="退出">退出</a></li>
+          </ul>
+        </div><!-- END pBody -->
+      </div><!-- END portlet -->
+    
+      <div id="p-logo" class="portlet">
+        <a style="background-image: url(<%= theme_image_path("acm_logo_135x135.png") %>);" href="<%= root_path %>" title="访问首页 [z]" accesskey="z"></a>
+      </div>
+      
+      <div id="p-navigation" class="generated-sidebar portlet">
+        <h5>导航</h5>
+        <div class="pBody">
+          <ul>
+            <li id="n-mainpage-description"><a href="#">首页</a></li>
+            <li id="n-portal"><a href="#" title="关于本计划，您可以做什么，应该如何做">社区入口</a></li>
+            <li id="n-currentevents"><a href="#" title="查找当前事件的背景信息">当前事件</a></li>
+            <li id="n-recentchanges"><a href="#" title="列出该网站的最近修改 [r]" accesskey="r">最近更改</a></li>
+            <li id="n-randompage"><a href="#" title="随机载入一个页面 [x]" accesskey="x">随机页面</a></li>
+            <li id="n-help"><a href="#" title="寻求帮助">帮助</a></li>
+          </ul>
+        </div><!-- END pBody -->
+      </div><!-- END portlet -->
+    
+      <div id="p-tb" class="portlet">
+        <h5>工具箱</h5>
+        <div class="pBody">
+          <ul>
+            <li id="t-whatlinkshere"><a href="#" title="列出所有与此页相链的页面 [j]" accesskey="j">链入页面</a></li>
+            <li id="t-recentchangeslinked"><a href="#" title="从此页链出的所有页面的更改 [k]" accesskey="k">链出更改</a></li>
+            <li id="t-upload"><a href="#" title="上传文件 [u]" accesskey="u">上传文件</a></li>
+            <li id="t-specialpages"><a href="#" title="所有特殊页面列表 [q]" accesskey="q">所有特殊页面</a></li>
+            <li id="t-print"><a href="#" rel="alternate" title="这个页面的可打印版本 [p]" accesskey="p">可打印版</a></li>
+            <li id="t-permalink"><a href="#" title="这个页面修订版本的永久链接">永久链接</a></li>      </ul>
+        </div><!-- END pBody -->
+      </div><!-- END portlet -->
+    
+    </div><!-- end of the left (by default at least) column -->
+    
+    <div class="visualClear"></div>
+    
+    <div id="footer">
+      <ul id="f-list">
+        <%= yield :lastmod %>
+        <li id="copyright">Copyright &copy; 2011 <a href="<%= root_path %>">ACM class</a>. All rights reserved.</li>
+        <li id="poweredby">Powered by <a target="_blank" href="http://github.com/oipn4e2/Enterprise-Wiki">Enterprise Wiki</a></li>
+      </ul>
+    </div><!-- END footer -->
+    
+  </div><!-- END globalWrapper -->
+  
+  <%= yield :mathjax %>
+</body>
+</html>

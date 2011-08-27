@@ -1,7 +1,8 @@
 2011/08/27
 ==========
 Add themes for ACM class and Enterprise Wik itself
-# TODO Add MediaWiki theme
+Add MediaWiki theme (monobook)
+# TODO Modify monobook theme (change sidebar, portlets, etc.)
 # TODO Go back to the last accessible page after signed in
 # TODO Restrict uploaded file extensions
 # TODO Add /sitemap (for human) and /sitemap.xml (for crawler)
