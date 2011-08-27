@@ -1,19 +1,23 @@
+2011/08/27
+==========
+Add themes for ACM class and Enterprise Wik itself
+# TODO Add MediaWiki theme
+# TODO Go back to the last accessible page after signed in
+# TODO Restrict uploaded file extensions
+# TODO Add /sitemap (for human) and /sitemap.xml (for crawler)
+# TODO Add tests
+# TODO Add universal markup editor
+# TODO Extend markup using Liquid to allow programmable pages
+# TODO Add online theme manager & editor
+# TODO "Watch this page"
+# TODO "This is a minor edit"
+
+
 2011/08/25
 ==========
 Add page previewing
 Add fixtures
 Add syntax highlighting with Pygments and Albino
-# TODO Add themes
-# TODO Add page visitor counter
-# TODO Add /sitemap (for human) and /sitemap.xml (for crawler)
-# TODO Add tests
-# TODO Go back to the last accessible page after signed in
-# TODO Add universal markup editor
-# TODO "This is a minor edit"
-# TODO "Watch this page"
-# TODO Extend markup using Liquid to allow programmable pages
-# TODO Restrict uploaded file extensions
-# TODO Add online theme manager & editor
 
 
 2011/08/21
