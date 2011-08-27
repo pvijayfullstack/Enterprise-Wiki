@@ -18,9 +18,15 @@
       </a>
       
       <ul class="navigation">
-        <li class="current_page_item"><a href="#" title="Page">Page</a></li>
-        <li class="page_item"><a href="#" title="Edit">Edit</a></li>
-        <li class="page_item"><a href="#" title="History">History</a></li>
+        <li class="<%= page_item_tag nil %>">
+          <a href="/<%= params[:path] %>" title="View the content page">page</a>
+        </li>
+        <li class="<%= page_item_tag :edit %>">
+          <a href="/<%= params[:path] %>?do=edit" title="Edit this page">edit</a>
+        </li>
+        <li class="<%= page_item_tag :history %>">
+          <a href="/<%= params[:path] %>?do=history" title="Past revisions of this page">history</a>
+        </li>
       </ul><!-- END navigation -->
       
     </div><!-- END header -->

@@ -142,4 +142,12 @@ module PageHelper
   def topic_is? (path_name)
     "#{params[:path]}/".starts_with? "#{path_name}/"
   end
+  
+  def action_is? (act)
+    params[act] or params[:do] == act.try(:to_s)
+  end
+  
+  def page_item_tag (current)
+    action_is?(current) ? "current_page_item" : "page_item"
+  end
 end
