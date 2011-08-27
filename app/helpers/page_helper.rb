@@ -144,10 +144,26 @@ module PageHelper
   end
   
   def action_is? (act)
-    params[act] or params[:do] == act.try(:to_s)
+    if act
+      params[act.to_sym] or params[:do] == act.to_s or params[:keep] == act.to_s
+    else
+      not (params[:do] or params[:keep] or params[:edit] or params[:upload] or params[:history])
+    end
   end
   
   def page_item_tag (current)
     action_is?(current) ? "current_page_item" : "page_item"
+  end
+  
+  def nav_can_download?
+    @page.try(:file?)
+  end
+  
+  def nav_has_content?
+    nav_has_history? and not @page.file?
+  end
+  
+  def nav_has_history?
+    @page and not @page.new_record?
   end
 end

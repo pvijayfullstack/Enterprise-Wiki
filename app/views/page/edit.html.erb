@@ -1,19 +1,20 @@
-<h1>Page#edit</h1>
-
 <% if @preview %>
-<div class="preview">
-  <h2>Preview</h2>
-  <div class="previewnote">
-    <p>
-      <b>Remember that this is only a preview.</b>
-      Your changes have not yet been saved!
-    </p>
+  <% content_for :title, "Preview of \"#{@page.title}\"" %>
+  <div class="preview">
+    <h2>Preview</h2>
+    <div class="previewnote">
+      <p>
+        <b>Remember that this is only a preview.</b>
+        Your changes have not yet been saved!
+      </p>
+    </div>
+    <div class="page_body"><%= render_markup(@page.markup, @page.body).html_safe %></div>
   </div>
-  <div class="page_body"><%= render_markup(@page.markup, @page.body).html_safe %></div>
-</div>
+<% else %>
+  <% content_for :title, "Editing #{@page.title}" %>
 <% end %>
 
-<%= form_for @page, :url => @page.to_s do |f| %>
+<%= form_for @page, :url => "#{@page}?keep=edit" do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :path %>

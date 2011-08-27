@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8"/>
-  <title><%= yield(:title) || "Enterprise Wiki" %></title>
+  <title><%= yield :title %> - Enterprise Wiki</title>
   <%= stylesheet_link_tag "reset" %>
   <%= stylesheet_link_tag "style" %>
   <%= stylesheet_link_tag "style_blue" %>
@@ -18,15 +18,29 @@
       </a>
       
       <ul class="navigation">
+      <% if nav_can_download? %>
+        <li class="<%= page_item_tag nil %>">
+          <a href="/<%= params[:path] %>" title="Download this file">download</a>
+        </li>
+      <% elsif nav_has_content? %>
         <li class="<%= page_item_tag nil %>">
           <a href="/<%= params[:path] %>" title="View the content page">page</a>
         </li>
+      <% end %>
+      <% if action_is? :upload %>
+        <li class="<%= page_item_tag :upload %>">
+          <a href="/<%= params[:path] %>?do=upload" title="Upload file">upload</a>
+        </li>
+      <% else %>
         <li class="<%= page_item_tag :edit %>">
           <a href="/<%= params[:path] %>?do=edit" title="Edit this page">edit</a>
         </li>
+      <% end %>
+      <% if nav_has_history? %>
         <li class="<%= page_item_tag :history %>">
           <a href="/<%= params[:path] %>?do=history" title="Past revisions of this page">history</a>
         </li>
+      <% end %>
       </ul><!-- END navigation -->
       
     </div><!-- END header -->
