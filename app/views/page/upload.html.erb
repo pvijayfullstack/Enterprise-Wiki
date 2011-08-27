@@ -1,4 +1,4 @@
-<h1>Page#upload</h1>
+<% content_for :title, "Upload file" %>
 
 <%= form_for @page, :url => @page.to_s, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
