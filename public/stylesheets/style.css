@@ -84,7 +84,7 @@ hr {
 .clearfix {
 	display: block;
 }
-html[xmlns] .clearfix {
+html .clearfix {
 	display: block;
 }
 * html .clearfix {
@@ -188,53 +188,15 @@ h6 {
 	margin: 0 auto;
 	padding: 25px 30px;
 }
-/* Sidebar */
-#sidebar {
-	width: 200px;
-	float: left;
-	margin-right: 20px;
-}
-#sidebar h3 {
-	padding-bottom: 5px;
-	padding-top: 1px;
-	width: 180px;
-	font-size: 16px;
-	padding-left: 10px;
-}
-#sidebar .widget {
-	width: 170px;
-	padding: 0 10px;
-	margin-bottom: 30px;
-	position: relative;
-	background: url(../images/post_bg.gif) repeat-x 0 0;
-	padding-top: 10px;
-}
-#sidebar .text {
-	display: block;
-	width: 154px;
-	padding: 5px 7px;
-	margin: 0px;
-	margin-top: 3px;
-	border: 1px solid #b4b4b4;
-	border-top: 1px solid #727272;
-	border-bottom: 1px solid #dadada;
-	background: #fff url(../images/tex_bg.gif) repeat-x 0 0;
-	font-size: 13px;
-}
-#sidebar label {
-	margin-bottom: 10px;
-	display: block;
-}
 /* Content */
 #content {
-	float: left;
-	width: 720px;
+	width: 100%;
 }
 /* Post */
 #content .post_wrap {
 	float: left;
 	background: url(../images/post_bg.gif) repeat-x 0 0;
-	width: 720px;
+	width: 100%;
 	margin-bottom: 10px;
 	padding-top: 5px;
 	position: relative;
