@@ -17,10 +17,6 @@
 <%= form_for @page, :url => "#{@page}?keep=edit" do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :path %>
-    <%= f.text_field :path, :readonly => true %>
-  </p>
-  <p>
     <%= f.label :title %>
     <%= f.text_field :title %>
   </p>

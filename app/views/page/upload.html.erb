@@ -3,10 +3,6 @@
 <%= form_for @page, :url => @page.to_s, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :path %>
-    <%= f.text_field :path, :readonly => true %>
-  </p>
-  <p>
     <%= f.label :title %>
     <%= f.text_field :title %>
   </p>
