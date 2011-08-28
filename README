@@ -2,6 +2,7 @@
 ==========
 Modify monobook theme (change sidebar, portlets, etc.)
 Beautify forms (editing, uploading, etc.)
+# TODO Beautify page history (table.history ...)
 # FIXME can not logout in monobook theme (routing error)
 # TODO Go back to the last accessible page after signed in
 # TODO Restrict uploaded file extensions
