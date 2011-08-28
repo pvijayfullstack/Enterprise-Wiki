@@ -9,42 +9,44 @@
         Your changes have not yet been saved!
       </p>
     </div>
-    <div class="page_body"><%= render_markup(@page.markup, @page.body).html_safe %></div>
+    <%= render_markup(@page.markup, @page.body).html_safe %>
   </div>
+  <hr/>
 <% end %>
 
 <%= form_for @page, :url => "#{@page}?keep=edit" do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :size => "60", :maxlength => "100" %>
+    <%= f.label "(required)", :for => :page_title %>
+  </p>
+  <p>
+    <%= f.text_area :body, :size => "80x25" %>
+  </p>
+  <p>
+    <%= f.label :commit_message %>
+    <%= f.text_field :commit_message, :size => "60", :maxlength => "100" %>
+    <%= f.label "(optional)", :for => :page_commit_message %>
   </p>
   <p>
     <%= f.label :markup %>
     <%= collection_select :page, :markup_id, Markup.all, :id, :title %>
   </p>
   <p>
-    <%= f.label :body %>
-    <%= f.text_area :body, :size => "60x12" %>
-  </p>
-  <p>
     <%= f.label :theme %>
-    <%= collection_select :page, :theme_id, Theme.all, :id, :title, :prompt => true %>
+    <%= collection_select :page, :theme_id, Theme.all, :id, :title, :include_blank => "Enterprise Wiki (default)" %>
   </p>
   <p>
-    <%= f.label :is_private %>
     <%= f.check_box :is_private %>
+    <%= f.label "This page is private (only accessible to specific roles)", :for => :page_is_private %>
   </p>
   <p>
-    <%= f.label :is_protected %>
     <%= f.check_box :is_protected %>
+    <%= f.label "This page is protected (only accessbile to signed-in users)", :for => :page_is_protected %>
   </p>
   <p>
-    <%= f.label :commit_message %>
-    <%= f.text_field :commit_message %>
-  </p>
-  <p>
-    <%= f.submit "Save page" %>
+    <%= f.submit "Save page", :style => "font-weight: bold" %>
     <%= f.submit "Show preview" %>
   </p>
 <% end %>

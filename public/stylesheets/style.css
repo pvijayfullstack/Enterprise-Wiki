@@ -223,3 +223,7 @@ h6 {
 	height: 20px;
 	letter-spacing: 0.5px;
 }
+/* Forms */
+.caution em { color: #C00; font-weight: bold; font-style: normal; font-size: 1.2em; }
+.new_page textarea { width: 100%; }
+.edit_page textarea { width: 100%; }

@@ -1,26 +1,35 @@
 <% content_for :title, "Upload file" %>
 
-<%= form_for @page, :url => @page.to_s, :html => { :multipart => true } do |f| %>
+<%= form_for @page, :url => "#{@page}?keep=upload", :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  <p class="caution">
+  <% if nav_can_download? %>
+    <em>You will overwrite an existing file! Make sure you DO want to overwrite it.</em>
+  <% elsif nav_has_content? %>
+    <em>You will overwrite an existing page! This is usually NOT recommended.</em>
+  <% end %>
   </p>
   <p>
-    <%= f.label :file %>
+    <%= f.label "Your local file", :for => :somefile %>
     <%= file_field_tag :somefile %>
   </p>
   <p>
-    <%= f.label :is_private %>
-    <%= f.check_box :is_private %>
-  </p>
-  <p>
-    <%= f.label :is_protected %>
-    <%= f.check_box :is_protected %>
+    <%= f.label "Download name", :for => :page_title %>
+    <%= f.text_field :title %>
+    <%= f.label "This is the default file name when the file is downloaded", :for => :page_title %>
   </p>
   <p>
     <%= f.label :commit_message %>
-    <%= f.text_field :commit_message %>
+    <%= f.text_field :commit_message, :size => "60", :maxlength => "100" %>
+    <%= f.label "(optional)", :for => :page_commit_message %>
+  </p>
+  <p>
+    <%= f.check_box :is_private %>
+    <%= f.label "This page is private (only accessible to specific roles)", :for => :page_is_private %>
+  </p>
+  <p>
+    <%= f.check_box :is_protected %>
+    <%= f.label "This page is protected (only accessbile to signed-in users)", :for => :page_is_protected %>
   </p>
   <p>
     <%= f.submit "Upload file" %>

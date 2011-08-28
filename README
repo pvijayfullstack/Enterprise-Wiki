@@ -1,8 +1,7 @@
-2011/08/27
+2011/08/28
 ==========
-Add themes for ACM class and Enterprise Wik itself
-Add MediaWiki theme (monobook)
-# TODO Modify monobook theme (change sidebar, portlets, etc.)
+Modify monobook theme (change sidebar, portlets, etc.)
+Beautify forms (editing, uploading, etc.)
 # FIXME can not logout in monobook theme (routing error)
 # TODO Go back to the last accessible page after signed in
 # TODO Restrict uploaded file extensions
@@ -13,6 +12,12 @@ Add MediaWiki theme (monobook)
 # TODO Add online theme manager & editor
 # TODO "Watch this page"
 # TODO "This is a minor edit"
+
+
+2011/08/27
+==========
+Add themes for ACM class and Enterprise Wik itself
+Add MediaWiki theme (monobook)
 
 
 2011/08/25

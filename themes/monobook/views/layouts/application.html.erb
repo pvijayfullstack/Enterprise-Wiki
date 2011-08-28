@@ -40,7 +40,7 @@
               <a href="/<%= params[:path] %>" accesskey="c">查看</a>
             </li>
           <% end %>
-          <% if action_is? :upload %>
+          <% if nav_show_upload? %>
             <li class="<%= monobook_selected_tag :upload %>" id="ca-edit">
               <a href="/<%= params[:path] %>?do=upload" accesskey="e">上传</a>
             </li>

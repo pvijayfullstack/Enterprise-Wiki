@@ -28,7 +28,7 @@
           <a href="/<%= params[:path] %>" title="View the content page">page</a>
         </li>
       <% end %>
-      <% if action_is? :upload %>
+      <% if nav_show_upload? %>
         <li class="<%= page_item_tag :upload %>">
           <a href="/<%= params[:path] %>?do=upload" title="Upload file">upload</a>
         </li>

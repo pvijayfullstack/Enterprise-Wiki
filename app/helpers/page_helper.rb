@@ -170,4 +170,8 @@ module PageHelper
   def nav_has_history?
     @page.try(:has_history?)
   end
+  
+  def nav_show_upload?
+    nav_can_download? or action_is? :upload
+  end
 end

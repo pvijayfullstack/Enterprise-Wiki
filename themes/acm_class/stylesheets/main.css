@@ -19,6 +19,12 @@ tt, code, pre {
     line-height: 29px;
 }
 
+.new_page textarea { width: 100%; }
+.new_page p { margin: 5px; }
+
+.edit_page textarea { width: 100%; }
+.edit_page p { margin: 5px; }
+
 /*a:link,a:visited{ color: #ad104f; text-decoration: none; }*/
 a:link,a:visited{ color: #2B7EA1; text-decoration: none; }
 
