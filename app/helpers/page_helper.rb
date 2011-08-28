@@ -155,15 +155,19 @@ module PageHelper
     action_is?(current) ? "current_page_item" : "page_item"
   end
   
+  def monobook_selected_tag (current)
+    action_is?(current) ? "selected" : ""
+  end
+  
   def nav_can_download?
     @page.try(:file?)
   end
   
   def nav_has_content?
-    nav_has_history? and not @page.file?
+    @page.try(:has_content?)
   end
   
   def nav_has_history?
-    @page and not @page.new_record?
+    @page.try(:has_history?)
   end
 end

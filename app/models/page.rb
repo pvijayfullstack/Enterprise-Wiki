@@ -46,4 +46,20 @@ class Page < ActiveRecord::Base
       body.length
     end
   end
+  
+  def has_history?
+    if revision
+      if new_record? and revision == 1
+        false
+      else
+        true
+      end
+    else
+      false
+    end
+  end
+  
+  def has_content?
+    has_history? and not file?
+  end
 end

@@ -92,6 +92,12 @@ private
     Page.find_latest_by_path(@path)
   end
   
+  def try_theme
+    if @page.try(:theme)
+      theme @page.theme.title
+    end
+  end
+  
   def can_show_path?
     user_signed_in? and current_user.can_show? @path
   end
@@ -124,6 +130,7 @@ private
     if can_show_page?
       if history?
         @history = Page.get_history(@path)
+        try_theme
         render :history
       elsif @page.plain?
         render :text => @page.body, :content_type => 'text/plain'
@@ -132,9 +139,7 @@ private
         #      instead of breaking the image directly
         send_file @page.body, :filename => @page.title
       else
-        if @page.theme
-          theme @page.theme.title
-        end
+        try_theme
         render :show
       end
     else
@@ -169,6 +174,7 @@ private
     if @page.file?
       redirect_to "#{@page}?do=upload"
     else
+      try_theme
       render :edit
     end
   end
@@ -196,6 +202,7 @@ private
     elsif @page.save
       redirect_to @page.to_s
     else
+      try_theme
       render :edit
     end
   end
@@ -210,6 +217,7 @@ private
       redirect_to "#{@page}?do=upload"
     else
       @preview = true
+      try_theme
       render :edit
     end
   end

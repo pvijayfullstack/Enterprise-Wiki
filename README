@@ -3,6 +3,7 @@
 Add themes for ACM class and Enterprise Wik itself
 Add MediaWiki theme (monobook)
 # TODO Modify monobook theme (change sidebar, portlets, etc.)
+# FIXME can not logout in monobook theme (routing error)
 # TODO Go back to the last accessible page after signed in
 # TODO Restrict uploaded file extensions
 # TODO Add /sitemap (for human) and /sitemap.xml (for crawler)

@@ -1,5 +1,6 @@
+<% content_for :title, "Editing #{@page.title}" %>
+
 <% if @preview %>
-  <% content_for :title, "Preview of \"#{@page.title}\"" %>
   <div class="preview">
     <h2>Preview</h2>
     <div class="previewnote">
@@ -10,8 +11,6 @@
     </div>
     <div class="page_body"><%= render_markup(@page.markup, @page.body).html_safe %></div>
   </div>
-<% else %>
-  <% content_for :title, "Editing #{@page.title}" %>
 <% end %>
 
 <%= form_for @page, :url => "#{@page}?keep=edit" do |f| %>

@@ -11,6 +11,7 @@
   <!--[if IE 6]><%= theme_stylesheet_link_tag "IE60Fixes" %><![endif]-->
   <!--[if IE 7]><%= theme_stylesheet_link_tag "IE70Fixes" %><![endif]-->
   <%= theme_stylesheet_link_tag "ew-fix" %>
+  <%= stylesheet_link_tag "pygments" %>
 </head>
 <body class="mediawiki ltr ns-subject skin-monobook">
   <div id="globalWrapper">
@@ -30,9 +31,29 @@
         <h5>查看</h5>
         <div class="pBody">
           <ul>
-            <li id="ca-nstab-main" class="selected"><a href="#" title="查看页面内容 [c]" accesskey="c">页面</a></li>
-            <li id="ca-edit"><a href="#" title="你可编辑此页，请在保存前先预览一下。 [e]" accesskey="e">编辑</a></li>
-            <li id="ca-history"><a href="#" title="此页面的早前修订版本 [h]" accesskey="h">历史</a></li>
+          <% if nav_can_download? %>
+            <li class="<%= monobook_selected_tag nil %>" id="ca-nstab-main">
+              <a href="/<%= params[:path] %>" accesskey="c">下载</a>
+            </li>
+          <% elsif nav_has_content? %>
+            <li class="<%= monobook_selected_tag nil %>" id="ca-nstab-main">
+              <a href="/<%= params[:path] %>" accesskey="c">查看</a>
+            </li>
+          <% end %>
+          <% if action_is? :upload %>
+            <li class="<%= monobook_selected_tag :upload %>" id="ca-edit">
+              <a href="/<%= params[:path] %>?do=upload" accesskey="e">上传</a>
+            </li>
+          <% else %>
+            <li class="<%= monobook_selected_tag :edit %>" id="ca-edit">
+              <a href="/<%= params[:path] %>?do=edit" accesskey="e">编辑</a>
+            </li>
+          <% end %>
+          <% if nav_has_history? %>
+            <li class="<%= monobook_selected_tag :history %>" id="ca-history">
+              <a href="/<%= params[:path] %>?do=history" accesskey="h">历史</a>
+            </li>
+          <% end %>
           </ul>
         </div><!-- END pBody -->
       </div><!-- END portlet -->
@@ -41,12 +62,14 @@
         <h5>个人工具</h5>
         <div class="pBody">
           <ul>
-            <li id="pt-userpage"><a href="#" title="您的用户页 [.]" accesskey=".">Xjia</a></li>
-            <li id="pt-mytalk"><a href="#" title="您的对话页 [n]" accesskey="n" class="new">讨论页</a></li>
-            <li id="pt-preferences"><a href="#" title="您的参数设置">设置</a></li>
-            <li id="pt-watchlist"><a href="#" title="您所监视页面的更改列表 [l]" accesskey="l">监视列表</a></li>
-            <li id="pt-mycontris"><a href="#" title="您的贡献列表 [y]" accesskey="y">贡献</a></li>
-            <li id="pt-logout"><a href="#" title="退出">退出</a></li>
+          <% if user_signed_in? %>
+            <li id="pt-userpage">
+              <a href="/~<%= current_user %>" title="您的用户页 [.]" accesskey="."><%= current_user %></a>
+            </li>
+            <li id="pt-logout"><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li id="pt-login"><%= link_to "登录", new_user_session_path, :accesskey => "o" %></li>
+          <% end %>
           </ul>
         </div><!-- END pBody -->
       </div><!-- END portlet -->
