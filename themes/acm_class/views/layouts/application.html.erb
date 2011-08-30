@@ -105,8 +105,18 @@
   </div><!-- END #main -->
 
   <div id="footer">
-    <p class="part-1">Powered by <a class="b" target="_blank" href="http://github.com/oipn4e2/Enterprise-Wiki">Enterprise Wiki</a></p>
-    <p class="part-2">Copyright &copy; 2011 <a href="<%= root_path %>">ACM Class</a>. All rights reserved.</p>
+    <p class="part-1">
+      Powered by <a class="b" target="_blank" href="http://github.com/oipn4e2/Enterprise-Wiki">Enterprise Wiki</a>
+      |
+      <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      <% else %>
+        <%= link_to('Login', new_user_session_path)  %>
+      <% end %>
+    </p>
+    <p class="part-2">
+      Copyright &copy; 2011 <a href="<%= root_path %>">ACM Class</a>. All rights reserved.
+    </p>
   </div>
 
   <%= yield :mathjax %>
