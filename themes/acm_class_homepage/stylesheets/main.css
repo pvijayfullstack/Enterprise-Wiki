@@ -794,11 +794,3 @@ p.foundabug {
     font-family: "PT Sans Bold";
     src: url("PT_Sans_Bold.ttf") format("truetype");
 }
-@font-face {
-    font-family: "PT Sans Italic";
-    src: url("PT_Sans_Italic.ttf") format("truetype");
-}
-@font-face {
-    font-family: "Liberation Mono";
-    src: url("LiberationMono-Regular.ttf") format("truetype");
-}
