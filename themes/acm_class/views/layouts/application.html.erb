@@ -62,7 +62,7 @@
               <ul>
                 <li><a href="/招生信息/招生简章">招生简章</a></li>
                 <li><a href="/招生信息/常见问题">常见问题</a></li>
-                <li><a href="/招生信息/在线提问">在线提问</a></li>
+                <li><a href="/#">在线提问</a></li>
               </ul>
               <% elsif topic_is? 'courses' %>
               <h3>课程中心</h3>
@@ -74,15 +74,23 @@
               <% elsif topic_is? '科研成果' %>
               <h3>科研成果</h3>
               <ul>
-                <!-- TODO -->
+                <li><a href="/科研成果/实验室">实验室</a></li>
+                <li><a href="/科研成果/论文发表">论文发表</a></li>
               </ul>
               <% elsif topic_is? '课余生活' %>
               <h3>课余生活</h3>
               <ul>
-                <!-- TODO -->
+                <li><a href="/课余生活/联谊会">联谊会</a></li>
+                <li><a href="/课余生活/学术节">学术节</a></li>
+                <li><a href="/课余生活/体育节">体育节</a></li>
               </ul>
               <% elsif topic_is? 'icpc' %>
-                <!-- TODO -->
+              <ul>
+                <li><a href="/icpc/校队介绍">校队介绍</a></li>
+                <li><a href="/icpc/竞赛成绩">竞赛成绩</a></li>
+                <li><a href="/icpc/赛场照片">赛场照片</a></li>
+                <li><a href="/icpc/系列讲座">系列讲座</a></li>
+              </ul>
               <% else %>
                 <!-- TODO -->
               <% end %>
