@@ -3,9 +3,11 @@
 Fix some bugs in templates and about content_for :title
 "This is a minor edit"
 Add CSS style for page history (table.history ...)
+Fix logout functionality in monobook theme (routing error)
+  => add <%= javascript_include_tag :defaults %> to application layout
+Prototype works with jQuery now.
 # TODO Editor should be able to manage sidebar menus online
 # FIXME Universal error messages not displayed (should be in application layouts)
-# FIXME can not logout in monobook theme (routing error)
 # TODO Go back to the last accessible page after signed in
 # TODO Restrict uploaded file extensions
 # TODO Add /sitemap (for human) and /sitemap.xml (for crawler)

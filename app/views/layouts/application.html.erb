@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag "style" %>
   <%= stylesheet_link_tag "style_blue" %>
   <%= stylesheet_link_tag "pygments" %>
+  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -66,7 +67,15 @@
 
   <div id="footer_wrap">
     <div id="footer">
-      <p class="left">Powered by <a href="http://github.com/oipn4e2/Enterprise-Wiki">Enterprise Wiki</a></p>
+      <p class="left">
+        Powered by <a href="http://github.com/oipn4e2/Enterprise-Wiki">Enterprise Wiki</a>
+        |
+        <% if user_signed_in? %>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        <% else %>
+          <%= link_to('Login', new_user_session_path)  %>
+        <% end %>
+      </p>
       <p style="text-align:right">Copyright &copy; 2011 Xiao Jia. All rights reserved.</p>
     </div><!-- END #footer -->
   </div><!-- END #footer_wrap -->
