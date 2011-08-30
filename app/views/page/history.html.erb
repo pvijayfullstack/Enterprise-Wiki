@@ -4,17 +4,19 @@
     <tr>
       <th>When</th>
       <th>Who</th>
-      <th>Content Length</th>
-      <th>Commit Message</th>
+      <th>Length</th>
+      <th>Summary</th>
+      <th>Minor?</th>
     </tr>
   </thead>
   <tbody>
   <% for @page in @history %>
     <tr>
-      <td><%= @page.created_at %></td>
+      <td><%= @page.created_at %> (<%= time_ago_in_words(@page.created_at) %> ago)</td>
       <td><%= @page.editor %></td>
       <td><%= @page.content_length %></td>
       <td><%= @page.commit_message %></td>
+      <td><%= @page.is_minor_edit? %></td>
     </tr>
   <% end %>
   </tbody>
