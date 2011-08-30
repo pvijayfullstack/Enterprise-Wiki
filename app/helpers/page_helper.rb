@@ -174,4 +174,8 @@ module PageHelper
   def nav_show_upload?
     nav_can_download? or action_is? :upload
   end
+  
+  def nav_show_edit?
+    action_is? :edit
+  end
 end

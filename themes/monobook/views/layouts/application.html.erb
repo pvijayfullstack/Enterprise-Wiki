@@ -44,7 +44,7 @@
             <li class="<%= monobook_selected_tag :upload %>" id="ca-edit">
               <a href="/<%= params[:path] %>?do=upload" accesskey="e">上传</a>
             </li>
-          <% else %>
+          <% elsif nav_show_edit? %>
             <li class="<%= monobook_selected_tag :edit %>" id="ca-edit">
               <a href="/<%= params[:path] %>?do=edit" accesskey="e">编辑</a>
             </li>

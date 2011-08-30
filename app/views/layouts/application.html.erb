@@ -32,7 +32,7 @@
         <li class="<%= page_item_tag :upload %>">
           <a href="/<%= params[:path] %>?do=upload" title="Upload file">upload</a>
         </li>
-      <% else %>
+      <% elsif nav_show_edit? %>
         <li class="<%= page_item_tag :edit %>">
           <a href="/<%= params[:path] %>?do=edit" title="Edit this page">edit</a>
         </li>
