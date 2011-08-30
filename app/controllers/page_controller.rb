@@ -160,7 +160,7 @@ private
   end
   
   def guess_title (path)
-    path.split('/').last.gsub(/_/, ' ').capitalize
+    path.split('/').last.gsub(/_/, ' ').titleize
   end
   
   def get_editable_page
