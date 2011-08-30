@@ -8,6 +8,7 @@ Fix logout functionality in monobook theme (routing error)
 Prototype works with jQuery now.
 # TODO Editor should be able to manage sidebar menus online
 # FIXME Universal error messages not displayed (should be in application layouts)
+# TODO Compare revisions
 # TODO Go back to the last accessible page after signed in
 # TODO Restrict uploaded file extensions
 # TODO Add /sitemap (for human) and /sitemap.xml (for crawler)
