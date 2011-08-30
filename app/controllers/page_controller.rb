@@ -166,6 +166,7 @@ private
   def get_editable_page
     page = get_page || Page.new(:path => @path, :title => guess_title(params[:path]))
     page.commit_message = ""
+    page.is_minor_edit = false
     page
   end
   
