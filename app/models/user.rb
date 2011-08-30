@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
       "#{path}/".starts_with? "~#{username}/"
     else
       prefix_rules.each do |rule|
-        if rule.rule_action.is(action) and "#{path}/".starts_with? "#{rule.prefix}/"
+        if rule.allow?(action, path)
           return true
         end
       end
