@@ -15,6 +15,6 @@ class PrefixRule < ActiveRecord::Base
   end
   
   def allow? (action, path)
-    rule_action.is(action) and "#{path}/".starts_with? "#{PageHelper.slugify(prefix)}/"
+    rule_action.is(action) and "#{path}/".starts_with? "#{URI.escape(PageHelper.slugify(prefix))}/"
   end
 end
