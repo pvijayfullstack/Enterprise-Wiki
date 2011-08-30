@@ -2,8 +2,8 @@
 ==========
 Fix some bugs in templates and about content_for :title
 "This is a minor edit"
+Add CSS style for page history (table.history ...)
 # FIXME Universal error messages not displayed (should be in application layouts)
-# TODO Beautify page history (table.history ...)
 # FIXME can not logout in monobook theme (routing error)
 # TODO Go back to the last accessible page after signed in
 # TODO Restrict uploaded file extensions

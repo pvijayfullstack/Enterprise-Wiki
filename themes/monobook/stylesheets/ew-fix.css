@@ -1,2 +1,19 @@
 /** Enterprise Wiki fixes for MediaWiki monobook theme **/
 .mw-headline a { color: #000; text-decoration: none; }
+
+table.history {
+  border-left: 1px solid #abc;
+  border-top: 1px solid #abc;
+  border-right: 1px solid #7b7b7b;
+  border-bottom: 1px solid #7b7b7b;
+}
+table.history th, table.history td {
+  border-left: 1px solid #7b7b7b;
+  border-top: 1px solid #7b7b7b;
+  border-right: 1px solid #abc;
+  border-bottom: 1px solid #abc;
+  padding: 5px;
+}
+table.history th {
+  font-weight: bold;
+}

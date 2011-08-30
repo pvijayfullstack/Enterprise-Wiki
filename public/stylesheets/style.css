@@ -227,3 +227,19 @@ h6 {
 .caution em { color: #C00; font-weight: bold; font-style: normal; font-size: 1.2em; }
 .new_page textarea { width: 100%; }
 .edit_page textarea { width: 100%; }
+table.history {
+  border-left: 1px solid #abc;
+  border-top: 1px solid #abc;
+  border-right: 1px solid #7b7b7b;
+  border-bottom: 1px solid #7b7b7b;
+}
+table.history th, table.history td {
+  border-left: 1px solid #7b7b7b;
+  border-top: 1px solid #7b7b7b;
+  border-right: 1px solid #abc;
+  border-bottom: 1px solid #abc;
+  padding: 5px;
+}
+table.history th {
+  font-weight: bold;
+}

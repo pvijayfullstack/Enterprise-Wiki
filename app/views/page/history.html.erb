@@ -1,12 +1,12 @@
 <% content_for :title, "Revision history of \"#{@page.title}\"" %>
-<table class="history">
+<table class="history" cellspacing="0" cellpadding="0">
   <thead>
     <tr>
       <th>When</th>
       <th>Who</th>
       <th>Length</th>
-      <th>Summary</th>
       <th>Minor?</th>
+      <th>Summary</th>
     </tr>
   </thead>
   <tbody>
@@ -15,8 +15,8 @@
       <td><%= @page.created_at %> (<%= time_ago_in_words(@page.created_at) %> ago)</td>
       <td><%= @page.editor %></td>
       <td><%= @page.content_length %></td>
-      <td><%= @page.commit_message %></td>
       <td><%= @page.is_minor_edit? %></td>
+      <td><%= @page.commit_message %></td>
     </tr>
   <% end %>
   </tbody>
