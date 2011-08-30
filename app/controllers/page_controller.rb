@@ -123,7 +123,7 @@ private
   end
   
   def history?
-    params[:history] or params[:do] == "history"
+    params[:do] == "history"
   end
   
   def show
@@ -148,7 +148,7 @@ private
   end
   
   def edit?
-    params[:edit] or params[:do] == "edit"
+    params[:do] == "edit"
   end
   
   def try_edit
@@ -223,7 +223,7 @@ private
   end
   
   def upload?
-    params[:upload] or params[:do] == "upload"
+    params[:do] == "upload"
   end
   
   def try_upload

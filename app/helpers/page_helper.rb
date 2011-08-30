@@ -145,9 +145,9 @@ module PageHelper
   
   def action_is? (act)
     if act
-      params[act.to_sym] or params[:do] == act.to_s or params[:keep] == act.to_s
+      params[:do] == act.to_s or params[:keep] == act.to_s
     else
-      not (params[:do] or params[:keep] or params[:edit] or params[:upload] or params[:history])
+      not (params[:do] or params[:keep])
     end
   end
   
