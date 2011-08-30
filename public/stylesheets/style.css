@@ -243,3 +243,5 @@ table.history th, table.history td {
 table.history th {
   font-weight: bold;
 }
+.previewnote { text-indent: 3em; color: #C00; }
+strong, b { font-weight: bolder; }
