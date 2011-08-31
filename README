@@ -1,12 +1,7 @@
-2011/08/30
+2011/08/31
 ==========
-Fix some bugs in templates and about content_for :title
-"This is a minor edit"
-Add CSS style for page history (table.history ...)
-Fix logout functionality in monobook theme (routing error)
-  => add <%= javascript_include_tag :defaults %> to application layout
-Prototype works with jQuery now.
-# TODO Editor should be able to manage sidebar menus online
+Add sidebar
+# FIXME Path should not be escaped when saving to database (too long)
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions
 # TODO Go back to the last accessible page after signed in
@@ -17,6 +12,16 @@ Prototype works with jQuery now.
 # TODO Extend markup using Liquid to allow programmable pages
 # TODO Add online theme manager & editor
 # TODO "Watch this page"
+
+
+2011/08/30
+==========
+Fix some bugs in templates and about content_for :title
+"This is a minor edit"
+Add CSS style for page history (table.history ...)
+Fix logout functionality in monobook theme (routing error)
+  => add <%= javascript_include_tag :defaults %> to application layout
+Prototype works with jQuery now.
 
 
 2011/08/28

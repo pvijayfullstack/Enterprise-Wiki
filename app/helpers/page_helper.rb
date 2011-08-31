@@ -98,7 +98,26 @@ module PageHelper
     
     class MediaWiki < WikiCloth::Parser
       link_for do |path, text|
-        "<a href=\"/#{ PageHelper.slugify path }\">#{text}</a>"
+        if path == text
+          link_to(Page.find_latest_by_raw_path(path).try(:title) || text, "/#{path}")
+        elsif text.blank?
+          link_to(path, "/#{path}")
+        else
+          link_to(text, "/#{path}")
+        end
+      end
+      
+      external_link do |url, text|
+        if text.blank?
+          link_to(url, url, "blank")
+        else
+          link_to(text, url, "blank")
+        end
+      end
+      
+    protected
+      def link_to (text, url, target = "top")
+        "<a href=\"#{url}\" target=\"_#{target}\">#{ h text }</a>"
       end
     end
     
@@ -139,10 +158,6 @@ module PageHelper
     params[:path] == path_name ? "active" : ""
   end
   
-  def topic_is? (path_name)
-    "#{params[:path]}/".starts_with? "#{path_name}/"
-  end
-  
   def action_is? (act)
     if act
       params[:do] == act.to_s or params[:keep] == act.to_s
@@ -176,6 +191,14 @@ module PageHelper
   end
   
   def nav_show_edit?
-    action_is? :edit
+    nav_has_history? or action_is? :edit
+  end
+  
+  def render_sidebar (page)
+    if page.try(:sidebar)
+      render_markup(page.sidebar.markup, page.sidebar.body)
+    else
+      ""
+    end
   end
 end

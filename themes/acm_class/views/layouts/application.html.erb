@@ -48,55 +48,8 @@
               </div>
             </div>
             <div class="post-meta">
-              <!-- TODO navigation -->
               <div class="topic_nav">
-              <% if topic_is? '班级介绍' %>
-              <h3>班级介绍</h3>
-              <ul>
-                <li><a href="/班级介绍/大事记">大事记</a></li>
-                <li><a href="/班级介绍/教育理念">教育理念</a></li>
-                <li><a href="/班级介绍/任课教师">任课教师</a></li>
-                <li><a href="/班级介绍/学子风采">学子风采</a></li>
-                <li><a href="/班级介绍/班级标志">班级标志</a></li>
-              </ul>
-              <% elsif topic_is? '招生信息' %>
-              <h3>招生信息</h3>
-              <ul>
-                <li><a href="/招生信息/招生简章">招生简章</a></li>
-                <li><a href="/招生信息/常见问题">常见问题</a></li>
-                <li><a href="/#">在线提问</a></li>
-              </ul>
-              <% elsif topic_is? 'courses' %>
-              <h3>课程中心</h3>
-              <ul>
-                <li><a href="/courses/培养计划">培养计划</a></li>
-                <li><a href="/courses/教学实践">教学实践</a></li>
-                <li><a href="/courses/网上课堂">网上课堂</a></li>
-              </ul>
-              <% elsif topic_is? '科研成果' %>
-              <h3>科研成果</h3>
-              <ul>
-                <li><a href="/科研成果/实验室">实验室</a></li>
-                <li><a href="/科研成果/论文发表">论文发表</a></li>
-              </ul>
-              <% elsif topic_is? '课余生活' %>
-              <h3>课余生活</h3>
-              <ul>
-                <li><a href="/课余生活/联谊会">联谊会</a></li>
-                <li><a href="/课余生活/学术节">学术节</a></li>
-                <li><a href="/课余生活/体育节">体育节</a></li>
-              </ul>
-              <% elsif topic_is? 'icpc' %>
-              <h3>ACM-ICPC竞赛</h3>
-              <ul>
-                <li><a href="/icpc/校队介绍">校队介绍</a></li>
-                <li><a href="/icpc/竞赛成绩">竞赛成绩</a></li>
-                <li><a href="/icpc/赛场照片">赛场照片</a></li>
-                <li><a href="/icpc/系列讲座">系列讲座</a></li>
-              </ul>
-              <% else %>
-                <!-- TODO -->
-              <% end %>
+                <%= render_sidebar(@page).html_safe %>
               </div>
             </div>
           </div>

@@ -43,6 +43,8 @@ table.history th {
   font-weight: bold;
 }
 
+.toc { display: none; }
+
 /*a:link,a:visited{ color: #ad104f; text-decoration: none; }*/
 a:link,a:visited{ color: #2B7EA1; text-decoration: none; }
 
