@@ -4,6 +4,7 @@ Add sidebar
 Paths are not escaped when saving to database (or will cause too-long-path problem)
   Now works well with Apache and Passenger
 # TODO Add back-to-home and back-to-top buttons
+# TODO Implement sidebar with page model (instead of a separate model)
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions
 # TODO Go back to the last accessible page after signed in
