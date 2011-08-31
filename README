@@ -1,7 +1,8 @@
 2011/08/31
 ==========
 Add sidebar
-# FIXME Path should not be escaped when saving to database (too long)
+Paths are not escaped when saving to database (or will cause too-long-path problem)
+  Now works well with Apache and Passenger
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions
 # TODO Go back to the last accessible page after signed in
