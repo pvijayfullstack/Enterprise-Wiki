@@ -1,4 +1,3 @@
-require 'uri'
 require 'digest/md5'
 require 'fileutils'
 
@@ -52,19 +51,15 @@ private
     slugified_path == params[:path]
   end
   
-  def escaped_path
-    URI.escape slugified_path
-  end
-  
-  def escaped_path_with_query
-    "/" + escaped_path + query_string
+  def path_with_query
+    "/" + slugified_path + query_string
   end
   
   def escape_path
-    if not path_slugified?
-      redirect_to escaped_path_with_query
+    if path_slugified?
+      @path = slugified_path
     else
-      @path = escaped_path
+      redirect_to path_with_query
     end
   end
   

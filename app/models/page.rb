@@ -1,5 +1,3 @@
-require 'uri'
-
 class Page < ActiveRecord::Base
   belongs_to :editor, :class_name => "User", :foreign_key => "editor_id"
   belongs_to :markup
@@ -18,7 +16,7 @@ class Page < ActiveRecord::Base
   end
   
   def self.find_latest_by_raw_path (path)
-    find_latest_by_path(URI.escape(PageHelper.slugify(path)))
+    find_latest_by_path(PageHelper.slugify(path))
   end
   
   def self.get_history (path)
@@ -71,6 +69,6 @@ class Page < ActiveRecord::Base
   
   def sidebar
     # TODO find sidebar level by level (sidebar /a will match page /a/b if sidebar /a/b doesnt exist)
-    Sidebar.find_by_path(URI.unescape(path))
+    Sidebar.find_by_path(path)
   end
 end
