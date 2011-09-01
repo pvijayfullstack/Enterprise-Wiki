@@ -6,6 +6,8 @@ class PageController < ApplicationController
   before_filter :authenticate_user!, :except => :view
   before_filter :authorize_save, :only => :save
   
+  after_filter :remember_last_page_path
+  
   def view
     if edit?
       try_edit
@@ -27,6 +29,10 @@ class PageController < ApplicationController
   end
   
 private
+  def remember_last_page_path
+    session[:last_page_path] = request.fullpath
+  end
+  
   def query_params
     params.select {|k,v| not %w(controller action path).include?(k) }
   end
