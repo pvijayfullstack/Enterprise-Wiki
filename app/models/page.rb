@@ -68,6 +68,19 @@ class Page < ActiveRecord::Base
   end
   
   def sidebar
-    Page.find_latest_by_path("#{path}:sidebar")
+    p = path
+    while not p.blank? and not (s = find_sidebar(p))
+      p = shadow_path(p)
+    end
+    s
+  end
+  
+protected
+  def find_sidebar (p)
+    Page.find_latest_by_path("#{p}:sidebar")
+  end
+  
+  def shadow_path (p)
+    p.rpartition("/").first
   end
 end
