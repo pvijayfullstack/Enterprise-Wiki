@@ -1,22 +1,20 @@
 <% content_for :title, "Revision history of \"#{@page.title}\"" %>
-<table class="history" cellspacing="0" cellpadding="0">
-  <thead>
-    <tr>
-      <th>When</th>
-      <th>Who</th>
-      <th>Length</th>
-      <th>Minor?</th>
-      <th>Summary</th>
-    </tr>
-  </thead>
+<table class="history" cellspacing="0" cellpadding="0">  
   <tbody>
   <% for @page in @history %>
     <tr>
-      <td><%= @page.created_at %> (<%= time_ago_in_words(@page.created_at) %> ago)</td>
-      <td><%= @page.editor %></td>
-      <td><%= @page.content_length %></td>
-      <td><%= @page.is_minor_edit? %></td>
-      <td><%= @page.commit_message %></td>
+      <td class="checkbox">
+        <input id="page_<%= @page.id %>" name="versions[]" type="checkbox" value="<%= @page.id %>" />
+      </td>
+      <td class="author">
+        <span class="username">
+          <%= link_to @page.editor, @page.editor.homepage %>
+        </span>
+      </td>
+      <td class="commit-name">
+        <span class="time-elapsed"><%= @page.created_at.strftime("%b %e, %Y") %></span>
+        <%= @page.commit_message %>
+      </td>
     </tr>
   <% end %>
   </tbody>

@@ -1,0 +1,69 @@
+table.history {
+  border-spacing: 2px;
+  border-color: gray;
+  border-collapse: collapse;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  margin-bottom: 20px; 
+}
+table.history tbody {
+  border-collapse: collapse;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+table.history tr {
+  background-color: #EBF2F6;
+  padding: 0;
+  margin: 0;
+  border-collapse: collapse;
+}
+table.history tr:nth-child(2n) {
+  background-color: #F3F7FA;
+}
+table.history tr.selected {
+  background-color: #FFFFEA!important;
+  z-index: 100;
+}
+table.history tr td {
+  border: 1px solid #C0DCE9;
+  line-height: 1.6em;
+  font-size: .9em;
+  margin: 0;
+  padding: .3em .7em;
+}
+table.history tr td.checkbox {
+  min-width: 2em;
+  width: 2em;
+  padding: .3em 0 .2em .8em;
+}
+table.history tr td.checkbox input {
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+table.history tr td.author {
+  width: 20%;
+}
+table.history tr td.author a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+table.history tr td.author a:hover {
+  text-decoration: underline;
+}
+table.history tr td.author span.username {
+  display: block;
+  padding-top: 3px;
+}
+table.history tr td.commit-name {
+  border-left: 0;
+}
+table.history tr td.commit-name span.time-elapsed {
+  color: #999;
+}

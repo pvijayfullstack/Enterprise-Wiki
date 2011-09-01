@@ -25,24 +25,6 @@ tt, code, pre {
 .edit_page textarea { width: 95%; }
 .edit_page p { margin: 5px; }
 
-table.history { margin-bottom: 20px; }
-table.history {
-  border-left: 1px solid #abc;
-  border-top: 1px solid #abc;
-  border-right: 1px solid #7b7b7b;
-  border-bottom: 1px solid #7b7b7b;
-}
-table.history th, table.history td {
-  border-left: 1px solid #7b7b7b;
-  border-top: 1px solid #7b7b7b;
-  border-right: 1px solid #abc;
-  border-bottom: 1px solid #abc;
-  padding: 5px;
-}
-table.history th {
-  font-weight: bold;
-}
-
 /*a:link,a:visited{ color: #ad104f; text-decoration: none; }*/
 a:link,a:visited{ color: #2B7EA1; text-decoration: none; }
 
