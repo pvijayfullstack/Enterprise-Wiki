@@ -2,17 +2,19 @@
 ==========
 Implement sidebar with page model (instead of a separate model)
   page "/somepath" with sidebar page "/somepath:sidebar"
+Search sidebar level by level
+  page "/a/b" will use "/a:sidebar" if "/a/b:sidebar" doesn't exist
+# TODO Go back to the last accessible page after signed in
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions
-# TODO Go back to the last accessible page after signed in
-# TODO Restrict uploaded file extensions
 # TODO Add /sitemap (for human) and /sitemap.xml (for crawler)
 # TODO Add tests
-# TODO Add universal markup editor
 # TODO Extend markup using Liquid to allow programmable pages
 # TODO Add online theme manager & editor
 # TODO "Watch this page"
 # TODO Add back-to-home and back-to-top buttons
+# TODO Restrict uploaded file extensions
+# TODO Add universal markup editor
 
 
 2011/08/31
