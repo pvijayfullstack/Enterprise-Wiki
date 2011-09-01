@@ -68,7 +68,6 @@ class Page < ActiveRecord::Base
   end
   
   def sidebar
-    # TODO find sidebar level by level (sidebar /a will match page /a/b if sidebar /a/b doesnt exist)
-    Sidebar.find_by_path(path)
+    Page.find_latest_by_path("#{path}:sidebar")
   end
 end

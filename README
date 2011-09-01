@@ -1,10 +1,7 @@
-2011/08/31
+2011/09/01
 ==========
-Add sidebar
-Paths are not escaped when saving to database (or will cause too-long-path problem)
-  Now works well with Apache and Passenger
-# TODO Add back-to-home and back-to-top buttons
-# TODO Implement sidebar with page model (instead of a separate model)
+Implement sidebar with page model (instead of a separate model)
+  page "/somepath" with sidebar page "/somepath:sidebar"
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions
 # TODO Go back to the last accessible page after signed in
@@ -15,6 +12,14 @@ Paths are not escaped when saving to database (or will cause too-long-path probl
 # TODO Extend markup using Liquid to allow programmable pages
 # TODO Add online theme manager & editor
 # TODO "Watch this page"
+# TODO Add back-to-home and back-to-top buttons
+
+
+2011/08/31
+==========
+Add sidebar
+Paths are not escaped when saving to database (or will cause too-long-path problem)
+  Now works well with Apache and Passenger
 
 
 2011/08/30
