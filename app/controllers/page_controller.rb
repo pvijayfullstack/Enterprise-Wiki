@@ -164,8 +164,14 @@ private
     path.split('/').last.gsub(/_/, ' ').titleize
   end
   
+  def build_new_page
+    Page.new(:path      => @path,
+             :title     => guess_title(params[:path]),
+             :markup_id => session[:last_markup_id])
+  end
+  
   def get_editable_page
-    page = get_page || Page.new(:path => @path, :title => guess_title(params[:path]))
+    page = get_page || build_new_page
     page.commit_message = ""
     page.is_minor_edit = false
     page
@@ -202,6 +208,7 @@ private
     if @page.file?
       redirect_to "#{@page}?do=upload"
     elsif @page.save
+      session[:last_markup_id] = @page.markup_id
       redirect_to @page.to_s
     else
       try_theme
