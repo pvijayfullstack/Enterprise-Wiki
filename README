@@ -1,6 +1,7 @@
 2011/09/02
 ==========
 Remember last used markup
+Remember last used theme
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions
 # TODO Add /sitemap (for human) and /sitemap.xml (for crawler)

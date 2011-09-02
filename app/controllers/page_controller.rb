@@ -167,7 +167,8 @@ private
   def build_new_page
     Page.new(:path      => @path,
              :title     => guess_title(params[:path]),
-             :markup_id => session[:last_markup_id])
+             :markup_id => session[:last_markup_id],
+             :theme_id  => session[:last_theme_id])
   end
   
   def get_editable_page
@@ -209,6 +210,7 @@ private
       redirect_to "#{@page}?do=upload"
     elsif @page.save
       session[:last_markup_id] = @page.markup_id
+      session[:last_theme_id] = @page.theme_id
       redirect_to @page.to_s
     else
       try_theme
