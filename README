@@ -2,6 +2,7 @@
 ==========
 Remember last used markup
 Remember last used theme
+# TODO Help documentation
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions
 # TODO Add /sitemap (for human) and /sitemap.xml (for crawler)
