@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   has_many :pages, :foreign_key => "editor_id"
   has_and_belongs_to_many :roles
   
-  validates :username, :length => { :in => 4 .. 40 }
-  validates :username, :format => { :with => /\A[A-Za-z][A-Za-z0-9_.]+\z/ }
+  validates :username, :length => { :in => 2 .. 40 }
+  validates :username, :format => { :with => /\A[-A-Za-z][-A-Za-z0-9_.]+\z/ }
   validates :username, :uniqueness => { :case_sensitive => false }
   
   # Include default devise modules. Others available are:
