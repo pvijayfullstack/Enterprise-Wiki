@@ -1,5 +1,6 @@
 class SiteController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :must_be_admin!, :only => [:new_users, :create_users]
   
   def edit_password
     render :password
@@ -19,6 +20,34 @@ class SiteController < ApplicationController
     else
       render :password
     end
+  end
+  
+  def new_users
+    render :new_users
+  end
+  
+  def create_users
+    @user_list = params[:user_list]
+    if @user_list and not @user_list.blank?
+      @user_list.each_line do |line|
+        email, username, passwd = line.split
+        user = User.new(:email => email, :username => username, :password => passwd)
+        if user.save
+          UserMail.welcome_email(user, passwd).deliver
+        else
+          # TODO record error
+        end
+      end
+      
+      redirect_to "/site/users"
+    else
+      render :new_users
+    end
+  end
+
+protected
+  def must_be_admin!
+    redirect_to root_path unless current_user.try(:admin?)
   end
 
 end

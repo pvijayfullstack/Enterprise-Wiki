@@ -1,0 +1,10 @@
+<% content_for :title, "Add users" %>
+
+<% form_tag '/site/users/new' do %>
+<p>
+<%= text_area_tag :user_list, @user_list, :size => "80x25" %>
+</p>
+<p>
+  <%= submit_tag "Create users" %>
+</p>
+<% end %>

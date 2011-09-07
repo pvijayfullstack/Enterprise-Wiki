@@ -2,6 +2,9 @@ EnterpriseWiki::Application.routes.draw do
   match 'site/password' => 'site#edit_password', :via => :get
   match 'site/password' => 'site#save_password', :via => [:put, :post]
   
+  match 'site/users/new' => 'site#new_users',    :via => :get
+  match 'site/users/new' => 'site#create_users', :via => [:put, :post]
+  
   devise_for :users
   themes_for_rails
   
