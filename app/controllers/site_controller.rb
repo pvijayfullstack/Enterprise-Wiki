@@ -33,7 +33,7 @@ class SiteController < ApplicationController
         email, username, passwd = line.split
         user = User.new(:email => email, :username => username, :password => passwd)
         if user.save
-          UserMail.welcome_email(user, passwd).deliver
+          UserMailer.welcome_email(user, passwd).deliver
         else
           # TODO record error
         end
