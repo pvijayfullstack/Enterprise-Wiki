@@ -5,6 +5,8 @@ EnterpriseWiki::Application.routes.draw do
   match 'site/users/new' => 'site#new_users',    :via => :get
   match 'site/users/new' => 'site#create_users', :via => [:put, :post]
   
+  match 'site/stat/pv' => 'site#pv_stat', :via => :get
+  
   devise_for :users
   themes_for_rails
   

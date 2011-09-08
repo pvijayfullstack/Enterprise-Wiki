@@ -1,7 +1,4 @@
-2011/09/02
-==========
-Remember last used markup
-Remember last used theme
+
 # TODO Add support for <email></email> tag (like <math></math>)
 # TODO User homepage alias => any path redirect
 # TODO Help documentation
@@ -15,6 +12,12 @@ Remember last used theme
 # TODO Add back-to-home and back-to-top buttons
 # TODO Restrict uploaded file extensions
 # TODO Add universal markup editor
+
+
+2011/09/02
+==========
+Remember last used markup
+Remember last used theme
 
 
 2011/09/01

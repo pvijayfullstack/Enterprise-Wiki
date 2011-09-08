@@ -1,6 +1,6 @@
 class SiteController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :must_be_admin!, :only => [:new_users, :create_users]
+  before_filter :must_be_admin!, :only => [:new_users, :create_users, :pv_stat]
   
   def edit_password
     render :password
@@ -43,6 +43,20 @@ class SiteController < ApplicationController
     else
       render :new_users
     end
+  end
+  
+  def pv_stat
+    @dates_hash = Hash.new(0)
+    File.open(Rails.root.join("log", "#{params[:env]}.log")) do |f|
+      f.each_line do |line|
+        if line.starts_with? "Started"
+          date = line.match(/\d\d\d\d-\d\d-\d\d/)[0]
+          @dates_hash[date] += 1
+        end
+      end
+    end
+  rescue
+    @dates_hash = Hash.new
   end
 
 protected

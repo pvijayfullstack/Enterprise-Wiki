@@ -5,7 +5,7 @@ table.history {
   padding: 0;
   margin: 0;
   width: 100%;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 table.history tbody {
   border-collapse: collapse;
@@ -66,4 +66,19 @@ table.history tr td.commit-name {
 }
 table.history tr td.commit-name span.time-elapsed {
   color: #999;
+}
+
+table.stat {
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  padding: 0;
+  margin: 0;
+}
+table.stat th {
+  font-weight: bold;
+}
+table.stat th, table.stat td {
+  border-bottom: 1px solid #999;
+  border-right: 1px solid #999;
+  padding: 10px;
 }

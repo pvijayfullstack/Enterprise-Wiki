@@ -1,0 +1,14 @@
+<% content_for :title, "PV Stat" %>
+
+<table class="stat">
+  <tr>
+    <th>Date</th>
+    <th>PV</th>
+  </tr>
+  <% @dates_hash.each do |date, pv| %>
+  <tr>
+    <td><%= date %></td>
+    <td><%= pv %></td>
+  </tr>
+  <% end %>
+</table>
