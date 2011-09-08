@@ -72,7 +72,7 @@ table.stat {
   border-top: 1px solid #999;
   border-left: 1px solid #999;
   padding: 0;
-  margin: 0;
+  margin: auto;
 }
 table.stat th {
   font-weight: bold;
@@ -81,4 +81,5 @@ table.stat th, table.stat td {
   border-bottom: 1px solid #999;
   border-right: 1px solid #999;
   padding: 10px;
+  margin: 0;
 }

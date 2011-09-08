@@ -1,5 +1,15 @@
 <% content_for :title, "PV Stat" %>
 
+<form action="/site/stat/pv" method="get">
+  <select id="env" name="env">
+    <option value="production">Production</option>
+    <option value="development">Development</option>
+    <option value="test">Test</option>
+    <option value="server">Server</option>
+  </select>
+  <input type="submit" />
+</form>
+
 <table class="stat">
   <tr>
     <th>Date</th>

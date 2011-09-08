@@ -2,7 +2,10 @@
 
 <% form_tag '/site/users/new' do %>
 <p>
-<%= text_area_tag :user_list, @user_list, :size => "80x25" %>
+  EMAIL [spaces] USERNAME [spaces] PASSWD
+</p>
+<p>
+  <%= text_area_tag :user_list, @user_list, :size => "80x25" %>
 </p>
 <p>
   <%= submit_tag "Create users" %>
