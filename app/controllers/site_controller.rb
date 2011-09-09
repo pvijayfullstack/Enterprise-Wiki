@@ -49,18 +49,19 @@ class SiteController < ApplicationController
     @start_time = Time.new
     @dates_hash = Hash.new(0)
     @log_file = Rails.root.join("log", "#{params[:env]}.log")
-    # File.open(@log_file) do |f|
-    #   f.readlines.each do |line|
-    #     if line.starts_with? "Started"
-    #       date = line.match(/\d\d\d\d-\d\d-\d\d/)[0]
-    #       @dates_hash[date] += 1
-    #     end
-    #   end
-    # end
-    `grep Started #{@log_file}`.split(/\n/).each do |line|
-      date = line.match(/\d\d\d\d-\d\d-\d\d/)[0]
-      @dates_hash[date] += 1
+    
+    dates = `grep -o -P "\\d\\d\\d\\d-\\d\\d-\\d\\d" #{@log_file}`.split(/\n/)
+    i = 0
+    while i < dates.size
+      date = dates[i]
+      j = i + 1
+      while j < dates.size and dates[j] == date
+        j += 1
+      end
+      @dates_hash[date] = j - i
+      i = j
     end
+    
     @end_time = Time.new
   rescue
     @error = true
