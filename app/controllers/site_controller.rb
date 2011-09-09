@@ -46,17 +46,25 @@ class SiteController < ApplicationController
   end
   
   def pv_stat
+    @start_time = Time.new
     @dates_hash = Hash.new(0)
-    File.open(Rails.root.join("log", "#{params[:env]}.log")) do |f|
-      f.each_line do |line|
-        if line.starts_with? "Started"
-          date = line.match(/\d\d\d\d-\d\d-\d\d/)[0]
-          @dates_hash[date] += 1
-        end
-      end
+    @log_file = Rails.root.join("log", "#{params[:env]}.log")
+    # File.open(@log_file) do |f|
+    #   f.readlines.each do |line|
+    #     if line.starts_with? "Started"
+    #       date = line.match(/\d\d\d\d-\d\d-\d\d/)[0]
+    #       @dates_hash[date] += 1
+    #     end
+    #   end
+    # end
+    `grep Started #{@log_file}`.split(/\n/).each do |line|
+      date = line.match(/\d\d\d\d-\d\d-\d\d/)[0]
+      @dates_hash[date] += 1
     end
+    @end_time = Time.new
   rescue
-    @dates_hash = Hash.new
+    @error = true
+    @end_time = Time.new
   end
 
 protected

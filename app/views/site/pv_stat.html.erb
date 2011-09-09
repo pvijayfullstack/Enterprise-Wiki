@@ -22,3 +22,6 @@
   </tr>
   <% end %>
 </table>
+
+<p>Calculated in <%= @end_time - @start_time %> seconds</p>
+<% if @error %><p>Error occurred</p><% end %>
