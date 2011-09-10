@@ -22,6 +22,11 @@ class SiteController < ApplicationController
     end
   end
   
+  def list_users
+    @users = User.all
+    render :list_users
+  end
+  
   def new_users
     render :new_users
   end

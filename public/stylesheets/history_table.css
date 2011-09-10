@@ -83,3 +83,19 @@ table.stat th, table.stat td {
   padding: 10px;
   margin: 0;
 }
+
+table.users {
+  border-top: 1px solid #999;
+  border-left: 1px solid #999;
+  padding: 0;
+  margin: auto;
+}
+table.users th {
+  font-weight: bold;
+}
+table.users th, table.users td {
+  border-bottom: 1px solid #999;
+  border-right: 1px solid #999;
+  padding: 10px;
+  margin: 0;
+}

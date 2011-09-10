@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830105520) do
+ActiveRecord::Schema.define(:version => 20110910053200) do
 
   create_table "markups", :force => true do |t|
     t.string   "title",      :limit => 100, :null => false
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20110830105520) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "realname"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

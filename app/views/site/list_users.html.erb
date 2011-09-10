@@ -1,0 +1,18 @@
+<% content_for :title, "All users" %>
+
+<table class="users">
+  <tr>
+    <th>Realname</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Created at</th>
+  </tr>
+  <% @users.each do |u| %>
+  <tr>
+    <td><%= u.realname %></td>
+    <td><%= u.username %></td>
+    <td><%= u.email %></td>
+    <td><%= u.created_at %></td>
+  </tr>
+  <% end %>
+</table>

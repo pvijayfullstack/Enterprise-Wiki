@@ -7,6 +7,8 @@ EnterpriseWiki::Application.routes.draw do
   
   match 'site/stat/pv' => 'site#pv_stat', :via => :get
   
+  match 'site/users' => 'site#list_users', :via => :get
+  
   devise_for :users
   themes_for_rails
   
