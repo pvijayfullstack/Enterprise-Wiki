@@ -2,13 +2,17 @@
 
 <table class="users">
   <tr>
+    <th>Count</th>
     <th>Realname</th>
     <th>Username</th>
     <th>Email</th>
     <th>Created at</th>
   </tr>
+  <% i = 0 %>
   <% @users.each do |u| %>
+  <% i += 1 %>
   <tr>
+    <td><%= i %></td>
     <td><%= u.realname %></td>
     <td><%= u.username %></td>
     <td><%= u.email %></td>
