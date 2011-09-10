@@ -1,6 +1,7 @@
 2011/09/10
 ==========
 Add alias support by using Page model
+Add sitemap /site/map
 
 
 # TODO Add sqlite3 db file backup
@@ -8,7 +9,6 @@ Add alias support by using Page model
 # TODO Help documentation
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions
-# TODO Add /sitemap (for human) and /sitemap.xml (for crawler)
 # TODO Add tests
 # TODO Extend markup using Liquid to allow programmable pages
 # TODO Add online theme manager & editor

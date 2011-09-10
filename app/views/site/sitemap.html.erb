@@ -1,0 +1,6 @@
+<% content_for :title, "Sitemap" %>
+<ul>
+  <% @paths_and_titles.each do |path, title| %>
+  <li><a href="/<%= path %>"><%= title %></a></li>
+  <% end %>
+</ul>

@@ -1,6 +1,11 @@
 class SiteController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :sitemap
   before_filter :must_be_admin!, :only => [:new_users, :create_users, :pv_stat]
+  
+  def sitemap
+    @paths_and_titles = list_pages
+    render :sitemap
+  end
   
   def edit_password
     render :password
@@ -76,6 +81,12 @@ class SiteController < ApplicationController
 protected
   def must_be_admin!
     redirect_to root_path unless current_user.try(:admin?)
+  end
+  
+  def list_pages
+    Page.all.collect(&:path).uniq.collect do |path|
+      [path, Page.find_latest_by_path(path).title]
+    end
   end
 
 end

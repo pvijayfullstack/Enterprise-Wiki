@@ -9,6 +9,8 @@ EnterpriseWiki::Application.routes.draw do
   
   match 'site/users' => 'site#list_users', :via => :get
   
+  match 'site/map' => 'site#sitemap', :via => :get
+  
   devise_for :users
   themes_for_rails
   
