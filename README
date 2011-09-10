@@ -1,6 +1,10 @@
+2011/09/10
+==========
+Add alias support by using Page model
+
+
 # TODO Add sqlite3 db file backup
 # TODO Add support for <email></email> tag (like <math></math>)
-# TODO User homepage alias => any path redirect
 # TODO Help documentation
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions

@@ -31,6 +31,10 @@ class Page < ActiveRecord::Base
     self[:path].to_s.strip.downcase
   end
   
+  def alias?
+    markup and markup.is? :alias
+  end
+  
   def plain?
     markup and markup.is? :plain_text
   end

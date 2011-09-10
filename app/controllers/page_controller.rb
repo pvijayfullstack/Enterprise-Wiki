@@ -133,6 +133,8 @@ private
         @history = Page.get_history(@path)
         try_theme
         render :history
+      elsif @page.alias?
+        redirect_to @page.body
       elsif @page.plain?
         render :text => @page.body, :content_type => 'text/plain'
       elsif @page.file?
