@@ -183,11 +183,11 @@ private
   def edit
     @page = get_editable_page
     if @page.file?
-      redirect_to "#{@page}?do=upload"
-    else
-      try_theme
-      render :edit
+      @page.body = ""
+      @page.markup = nil
     end
+    try_theme
+    render :edit
   end
   
   def build_revision
@@ -208,9 +208,7 @@ private
   
   def save_page
     @page = build_page
-    if @page.file?
-      redirect_to "#{@page}?do=upload"
-    elsif @page.save
+    if @page.save
       session[:last_markup_id] = @page.markup_id
       session[:last_theme_id] = @page.theme_id
       redirect_to @page.to_s
