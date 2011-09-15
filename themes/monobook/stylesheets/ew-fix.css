@@ -1,2 +1,6 @@
 /** Enterprise Wiki fixes for MediaWiki monobook theme **/
 .mw-headline a { color: #000; text-decoration: none; }
+.hall_of_fame { border-top: 1px solid #aaa; border-left: 1px solid #aaa; }
+.hall_of_fame th { border-bottom: 1px solid #aaa; border-right: 1px solid #aaa; }
+.hall_of_fame td { border-bottom: 1px solid #bbb; border-right: 1px solid #bbb; padding: 2px; }
+.hall_of_fame hr { border-top: 1px solid #ccc; border-bottom: 0; border-left: 0; border-right: 0; margin: 2px; padding: 0; }
