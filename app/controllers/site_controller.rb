@@ -60,7 +60,7 @@ class SiteController < ApplicationController
     @dates_hash = Hash.new(0)
     @log_file = Rails.root.join("log", "#{params[:env]}.log")
     
-    dates = `grep -o -P "\\d\\d\\d\\d-\\d\\d-\\d\\d" #{@log_file}`.split(/\n/)
+    dates = `grep -o -P "at\\s\\d\\d\\d\\d-\\d\\d-\\d\\d" #{@log_file}`.split(/\n/)
     i = 0
     while i < dates.size
       date = dates[i]
