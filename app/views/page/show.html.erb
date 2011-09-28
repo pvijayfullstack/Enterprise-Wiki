@@ -3,6 +3,8 @@
 <p>Editor: <%= @page.editor %></p>
 <p>Revision: <%= @page.revision %></p>
 <p>Last update: <%= @page.updated_at %></p>
+<p>Secret before: <%= @page.secret_before %></p>
+<p>Is secret: <%= @page.is_secret? %></p>
 <p>Commit message: <%= @page.commit_message %></p>
 <p>Theme: <%= @page.theme %></p>
 <div class="page_body"><%= render_markup(@page.markup, @page.body).html_safe %></div>

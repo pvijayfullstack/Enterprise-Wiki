@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110910053200) do
+ActiveRecord::Schema.define(:version => 20110928015336) do
 
   create_table "markups", :force => true do |t|
     t.string   "title",      :limit => 100, :null => false
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20110910053200) do
     t.string   "commit_message"
     t.integer  "theme_id"
     t.boolean  "is_minor_edit"
+    t.datetime "secret_before"
   end
 
   add_index "pages", ["path", "revision"], :name => "index_pages_on_path_and_revision", :unique => true

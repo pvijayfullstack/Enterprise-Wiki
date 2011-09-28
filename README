@@ -1,8 +1,6 @@
-2011/09/10
+2011/09/28
 ==========
-Add alias support by using Page model
-Add sitemap /site/map
-
+Add secret_before to pages (only when page is public)
 
 # TODO Add sqlite3 db file backup
 # TODO Add support for <email></email> tag (like <math></math>)
@@ -16,6 +14,12 @@ Add sitemap /site/map
 # TODO Add back-to-home and back-to-top buttons
 # TODO Restrict uploaded file extensions
 # TODO Add universal markup editor
+
+
+2011/09/10
+==========
+Add alias support by using Page model
+Add sitemap /site/map
 
 
 2011/09/02

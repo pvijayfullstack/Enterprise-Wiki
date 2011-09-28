@@ -111,7 +111,7 @@ private
     elsif @page.is_protected? # allow signed in users
       user_signed_in?
     else                      # otherwise, public to all
-      true
+      not @page.is_secret?
     end
   end
   

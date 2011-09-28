@@ -79,6 +79,10 @@ class Page < ActiveRecord::Base
     s
   end
   
+  def is_secret?
+    secret_before and Time.now < secret_before
+  end
+  
 protected
   def find_sidebar (p)
     Page.find_latest_by_path("#{p}:sidebar")

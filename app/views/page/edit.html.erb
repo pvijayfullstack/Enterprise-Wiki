@@ -41,6 +41,10 @@
     <%= f.label "This page is protected (only accessbile to signed-in users)", :for => :page_is_protected %>
   </p>
   <p>
+    <%= f.label :secret_before %>
+    <%= datetime_select :page, :secret_before %>
+  </p>
+  <p>
     <%= f.label "Summary", :for => :page_commit_message %>
     <%= f.text_field :commit_message, :size => "60", :maxlength => "100" %>
     <%= f.label "(optional)", :for => :page_commit_message %>
