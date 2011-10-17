@@ -4,3 +4,5 @@ log/*.log
 tmp/
 .redcar/
 *.xcf
+Gemfile.lock
+db/schema.rb
