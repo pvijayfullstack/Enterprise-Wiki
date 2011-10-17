@@ -6,3 +6,4 @@ tmp/
 *.xcf
 Gemfile.lock
 db/schema.rb
+config/environments/production.rb
