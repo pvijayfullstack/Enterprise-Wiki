@@ -99,12 +99,20 @@ module PageHelper
     
     class MediaWiki < WikiCloth::Parser
       link_for do |path, text|
+        page = Page.find_latest_by_raw_path(path)
+        suffix = 
+          if page.try(:file?)
+            "?t=#{Time.now.to_i}"
+          else
+            ""
+          end
+        
         if path == text
-          link_to(Page.find_latest_by_raw_path(path).try(:title) || text, "/#{path}")
+          link_to(page.try(:title) || text, "/#{path}#{suffix}")
         elsif text.blank?
-          link_to(path, "/#{path}")
+          link_to(path, "/#{path}#{suffix}")
         else
-          link_to(text, "/#{path}")
+          link_to(text, "/#{path}#{suffix}")
         end
       end
       

@@ -1,19 +1,33 @@
-2011/09/28
+2011/10/18
 ==========
-Add secret_before to pages (only when page is public)
+Allow revision viewing
+Add timestamp to file links for MediaWiki syntax
 
-# TODO Add sqlite3 db file backup
+# TODO Add universal support for <file></file>
 # TODO Add support for <email></email> tag (like <math></math>)
 # TODO Help documentation
 # FIXME Universal error messages not displayed (should be in application layouts)
 # TODO Compare revisions
+# TODO Add file uploading entry UI/page
 # TODO Add tests
 # TODO Extend markup using Liquid to allow programmable pages
 # TODO Add online theme manager & editor
 # TODO "Watch this page"
-# TODO Add back-to-home and back-to-top buttons
-# TODO Restrict uploaded file extensions
 # TODO Add universal markup editor
+
+
+2011/10/17
+==========
+Add sqlite3 db file backup: /etc/cron.hourly/bakwiki
+  #!/bin/sh
+  backupdir=/bak/wikidata
+  time=` date +%Y%m%d `
+  cp /webapps/Enterprise-Wiki/db/production.sqlite3 $backupdir/production$time.sqlite3
+
+
+2011/09/28
+==========
+Add secret_before to pages (only when page is public)
 
 
 2011/09/10
