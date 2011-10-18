@@ -15,6 +15,10 @@ class Page < ActiveRecord::Base
     readonly.where(:path => path).order(:revision).last
   end
   
+  def self.find_by_path_and_revision (path, revision)
+    readonly.where(:path => path, :revision => revision).first
+  end
+  
   def self.find_latest_by_raw_path (path)
     find_latest_by_path(PageHelper.slugify(path))
   end

@@ -93,6 +93,14 @@ private
     Page.find_latest_by_path(@path)
   end
   
+  def get_page_for_show
+    if params[:r]
+      Page.find_by_path_and_revision(@path, params[:r])
+    else
+      get_page
+    end
+  end
+  
   def try_theme
     if @page.try(:theme)
       theme @page.theme.title
@@ -116,7 +124,7 @@ private
   end
   
   def try_show
-    if @page = get_page
+    if @page = get_page_for_show
       show
     else
       error 404

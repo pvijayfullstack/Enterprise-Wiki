@@ -6,6 +6,9 @@
       <td class="checkbox">
         <input id="page_<%= @page.id %>" name="versions[]" type="checkbox" value="<%= @page.id %>" />
       </td>
+      <td class="view_revision">
+        <%= link_to "(view)", "#{@page}?r=#{@page.revision}" %>
+      </td>
       <td class="author">
         <span class="username">
           <%= link_to @page.editor, @page.editor.homepage %>
