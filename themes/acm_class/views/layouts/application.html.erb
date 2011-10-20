@@ -65,7 +65,7 @@
       Powered by <a class="b" target="_blank" href="http://github.com/oipn4e2/Enterprise-Wiki">Enterprise Wiki</a>
       |
       <% if user_signed_in? %>
-        <%= link_to('Edit', "#{params[:path]}?do=edit") %>
+        <%= link_to('Edit', "/#{params[:path]}?do=edit") %>
         |
         <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
       <% else %>
