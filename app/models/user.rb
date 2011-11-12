@@ -50,15 +50,19 @@ class User < ActiveRecord::Base
   def can? (action, path)
     if admin?
       true
-    elsif path.starts_with? "~"
-      "#{path}/".starts_with? "~#{username}/"
     else
       prefix_rules.each do |rule|
         if rule.allow?(action, path)
           return true
         end
       end
-      false
+      path_owned?(path)
     end
   end
+
+protected
+  def path_owned? (path)
+    path.starts_with? "~" and "#{path}/".starts_with? "~#{username}/"
+  end
+  
 end
