@@ -85,11 +85,9 @@
         <h5>导航</h5>
         <div class="pBody">
           <ul>
-            <li id="n-mainpage-description"><a href="#">首页</a></li>
-            <li id="n-portal"><a href="#" title="关于本计划，您可以做什么，应该如何做">社区入口</a></li>
-            <li id="n-currentevents"><a href="#" title="查找当前事件的背景信息">当前事件</a></li>
+            <li id="n-mainpage-description"><a href="<%= root_path %>">首页</a></li>
+            <li id="n-portal"><a href="/<%= params[:path].match(/^[^\/]*/)[0] %>" title="返回最上层子目录">社区入口</a></li>
             <li id="n-recentchanges"><a href="#" title="列出该网站的最近修改 [r]" accesskey="r">最近更改</a></li>
-            <li id="n-randompage"><a href="#" title="随机载入一个页面 [x]" accesskey="x">随机页面</a></li>
             <li id="n-help"><a href="#" title="寻求帮助">帮助</a></li>
           </ul>
         </div><!-- END pBody -->
