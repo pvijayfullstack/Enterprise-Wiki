@@ -1,0 +1,11 @@
+Getting Started with Enterprise Wiki Development
+------------------------------------------------
+
+$ git clone git://github.com/oipn4e2/Enterprise-Wiki.git
+$ cd Enterprise-Wiki
+$ bundle install
+$ rake db:migrate
+$ rails s
+
+Then navigate to http://localhost:3000
+
