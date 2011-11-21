@@ -31,6 +31,10 @@ class Page < ActiveRecord::Base
     "/#{path}"
   end
   
+  def permalink
+    "/#{path}?r=#{revision}"
+  end
+  
   def path
     self[:path].to_s.strip.downcase
   end
